@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             AlmuerzaFacilTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Diego",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
