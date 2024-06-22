@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "508305492779",
+    "firebase_url": "https://almuerzafacil-99cf8-default-rtdb.firebaseio.com",
+    "project_id": "almuerzafacil-99cf8",
+    "storage_bucket": "almuerzafacil-99cf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508305492779:android:5ab04bd98e2ac10712536e",
+        "android_client_info": {
+          "package_name": "ghoststudios.app.almuerzafacil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZvu80IOoEHpEHDzmVgUjSsjVTsQiWTng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
