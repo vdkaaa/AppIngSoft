@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AlmuerzaFacil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //Formulario Strings
+    <string name="FormularioTituloCreandoAlmuerzo">Creando Almuerzo</string>
+    <string name="NombreAlmuerzo">Nombre del Almuerzo</string>
+    <string name="DescripcionAlmuerzo">Descripcion del Almuerzo</string>
+    <string name="ValorAlmuerzo">Valor del Almuerzo</string>
+    <string name="ImagenAlmuerzo">Imagen del Almuerzo</string>
+    //Botones
+    <string name="BotonSubirAlmuerzo">Subir Almuerzo</string>
+    //
 </resources>

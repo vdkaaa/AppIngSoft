@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/imgAddTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="344dp"
+        android:layout_height="236dp"
         app:layout_constraintBottom_toTopOf="@+id/pickImageBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
