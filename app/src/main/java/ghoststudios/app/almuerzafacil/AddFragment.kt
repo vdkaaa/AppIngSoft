@@ -21,12 +21,14 @@ class AddFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
         firebaseRef = FirebaseDatabase.getInstance().getReference("launchs")
 
         binding.btnSendAlmuerzo.setOnClickListener{
+            println("a")
             saveData()
+
         }
 
 
@@ -34,36 +36,40 @@ class AddFragment : Fragment() {
     }
 
     private fun saveData() {
-        val nombreAlmuerzo = binding.edtNombreAlmuerzo.text.toString()
-        val descripcionAlmuerzo = binding.edtDescripcionAlmuerzo.text.toString()
-        val valorAlmuerzoText = binding.edtValorAlmuerzo.text.toString()
+        println("b")
+        val nombreAlmuerzo = binding.edtNA.text.toString()
+        val descripcionAlmuerzo = binding.edtDA.text.toString()
+        val valorAlmuerzoText = binding.edtValor.text.toString()
         val valorAlmuerzo = valorAlmuerzoText.toIntOrNull()
-
-        if(nombreAlmuerzo.isEmpty()||nombreAlmuerzo!= "Nombre del Almuerzo") {
+        println(nombreAlmuerzo)
+        println(descripcionAlmuerzo)
+        println(valorAlmuerzoText)
+        if(nombreAlmuerzo.isEmpty()) {
             binding.edtNombreAlmuerzo.error = "Escribe un nombre para el Almuerzo" // AGREGAR A LOS STRINGS DPS
-            return
         }
-        if(descripcionAlmuerzo.isEmpty() ||descripcionAlmuerzo!= "Descripcion del Almuerzo") {
+        if(descripcionAlmuerzo.isEmpty()) {
             binding.edtDescripcionAlmuerzo.error = "Escribe una descripción para el Almuerzo" // AGREGAR A LOS STRINGS DPS
-            return
 
         }
 
         if (valorAlmuerzo == null) {
             binding.edtValorAlmuerzo.error = "Valor no válido para el Almuerzo"// AGREGAR A LOS STRINGS DPS
-            return
         }
-
         val concatId = firebaseRef.push().key!!
         val almuerzo = Almuerzo(concatId, nombreAlmuerzo, descripcionAlmuerzo, valorAlmuerzo)
-
+        println("d")
         firebaseRef.child(concatId).setValue(almuerzo)
             .addOnCompleteListener{
+                println("listenerOnComplete")
                 Toast.makeText(context, " Almuerzo enviado exitosamente", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
+                println("listenerOnDFail")
                 Toast.makeText(context, " Error ${it.message}", Toast.LENGTH_SHORT).show()
+            }.addOnCanceledListener{
+                println("listenercancel")
             }
+
 
     }
 
