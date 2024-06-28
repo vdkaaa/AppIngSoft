@@ -1,5 +1,6 @@
 package ghoststudios.app.almuerzafacil
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -31,8 +32,12 @@ class TestFirebaseConnection : AppCompatActivity() {
             insets
         }
 
+        setUpFirebase()
 
 
+
+    }
+    private fun setUpFirebase(){
         firebaseRef = FirebaseDatabase.getInstance().getReference("test")
         storageRef = FirebaseStorage.getInstance().getReference("Images")
 
@@ -52,10 +57,14 @@ class TestFirebaseConnection : AppCompatActivity() {
             pickedImage.launch("image/*")
         }
 
+        binding.homeBtn.setOnClickListener{
+            val intent = Intent(this, HomePage::class.java)
+            startActivity(intent)
+        }
 
 
         //Send data to the realtime database
-        binding.sendDataText.setOnClickListener{
+        binding.sendDataBtn.setOnClickListener{
 
             val lunchId = firebaseRef.push().key!!
             //val lunch = Lunch(lunchId,"Pan con pan","Descripción del pan con pan")
@@ -69,7 +78,7 @@ class TestFirebaseConnection : AppCompatActivity() {
 
                             val imgUrl = url.toString()
 
-                            lunch = Lunch(lunchId,"Pan con pan","Descripción del pan con pan", imgUrl)
+                            lunch = Lunch(lunchId,"Pan con pan","Descripción del pan con pan",100, imgUrl)
 
                             firebaseRef.child(lunchId).setValue(lunch).addOnCompleteListener{
                                 Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
@@ -81,6 +90,5 @@ class TestFirebaseConnection : AppCompatActivity() {
                     }
             }
         }
-
     }
 }
