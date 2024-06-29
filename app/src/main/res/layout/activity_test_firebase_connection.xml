@@ -8,7 +8,7 @@
     tools:context=".TestFirebaseConnection">
 
     <Button
-        android:id="@+id/pickImageBtn"
+        android:id="@+id/btnpickLunchImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pick image"
@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="0.973" />
 
     <ImageView
-        android:id="@+id/imgAddTest"
+        android:id="@+id/imgLunch"
         android:layout_width="344dp"
         android:layout_height="236dp"
-        app:layout_constraintBottom_toTopOf="@+id/pickImageBtn"
+        app:layout_constraintBottom_toTopOf="@+id/btnpickLunchImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginBottom="16dp"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pickImageBtn" />
+        app:layout_constraintEnd_toStartOf="@+id/btnpickLunchImage" />
 
     <Button
         android:id="@+id/sendDataBtn"
@@ -48,6 +48,6 @@
         android:layout_marginBottom="16dp"
         android:text="Send data"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pickImageBtn" />
+        app:layout_constraintStart_toEndOf="@+id/btnpickLunchImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

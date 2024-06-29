@@ -44,18 +44,18 @@ class TestFirebaseConnection : AppCompatActivity() {
         binding = ActivityTestFirebaseConnectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imgAddTest.setImageResource(R.drawable.tutorial)
+        //binding.imgAddTest.setImageResource(R.drawable.tutorial)
 
         val pickedImage = registerForActivityResult(ActivityResultContracts.GetContent()){
-            binding.imgAddTest.setImageURI(it)
+            //binding.imgAddTest.setImageURI(it)
             if(it != null){
                 uri = it
             }
 
         }
-        binding.pickImageBtn.setOnClickListener{
-            pickedImage.launch("image/*")
-        }
+        //binding.pickImageBtn.setOnClickListener{
+          //  pickedImage.launch("image/*")
+        //}
 
         binding.homeBtn.setOnClickListener{
             val intent = Intent(this, HomePage::class.java)

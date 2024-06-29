@@ -17,7 +17,7 @@
 
         <!-- Definir la actividad principal como ListAlmuerzosEmpresa -->
         <activity
-            android:name=".TestFirebaseConnection"
+            android:name=".ListAlmuerzosEmpresa"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".ListAlmuerzosEmpresa"
+            android:name=".TestFirebaseConnection"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
