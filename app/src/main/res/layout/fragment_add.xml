@@ -8,37 +8,63 @@
     tools:context=".AddFragment">
 
 
+    <Button
+        android:id="@+id/pickImageBtn"
+        android:layout_width="159dp"
+        android:layout_height="111dp"
+        android:text="Selecciona una imagen para el almuerzo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toEndOf="@+id/imgAddTest"
+        app:layout_constraintTop_toBottomOf="@+id/edtValorAlmuerzo"
+        app:layout_constraintVertical_bias="0.382" />
+
+    <ImageView
+        android:id="@+id/imgAddTest"
+        android:layout_width="235dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSendAlmuerzo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtValorAlmuerzo"
+        app:layout_constraintVertical_bias="0.268"
+        tools:srcCompat="@drawable/tutorial" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/FormularioTituloCreandoAlmuerzo"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
 
     <Button
         android:id="@+id/btnSendAlmuerzo"
         android:layout_width="168dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/BotonSubirAlmuerzo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtValorAlmuerzo" />
+        app:layout_constraintTop_toBottomOf="@+id/edtValorAlmuerzo"
+        app:layout_constraintVertical_bias="0.958" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtNombreAlmuerzo"
-        android:layout_width="409dp"
-        android:layout_height="79dp"
+        android:layout_width="412dp"
+        android:layout_height="135dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/edtDescripcionAlmuerzo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,19 +73,19 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNA"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:gravity="center"
             android:hint="@string/NombreAlmuerzo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtDescripcionAlmuerzo"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="406dp"
+        android:layout_height="123dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/edtValorAlmuerzo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,22 +94,17 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtDA"
             android:layout_width="match_parent"
-            android:layout_height="91dp"
+            android:layout_height="64dp"
             android:gravity="center"
             android:hint="@string/DescripcionAlmuerzo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtValorAlmuerzo"
-        android:layout_width="402dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="141dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSendAlmuerzo"
+        android:layout_width="411dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtDescripcionAlmuerzo">
 
