@@ -10,10 +10,10 @@
 
     <Button
         android:id="@+id/btnpickLunchImage"
-        android:layout_width="159dp"
-        android:layout_height="111dp"
-        android:text="Selecciona una imagen para el almuerzo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="169dp"
+        android:layout_height="51dp"
+        android:text="Seleccionar imagen "
+        app:layout_constraintBottom_toTopOf="@+id/btnSendAlmuerzo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toEndOf="@+id/imgLunch"
@@ -114,5 +114,13 @@
             android:gravity="center"
             android:hint="@string/ValorAlmuerzo" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atrás"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

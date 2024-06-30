@@ -1,8 +1,11 @@
 package ghoststudios.app.almuerzafacil
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,12 +16,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.LunchAdapterClass
 
 class HomePage : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
     private lateinit var arrayOfLunches : ArrayList<Lunch>
+    private lateinit var adapter: LunchAdapterClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,39 +34,41 @@ class HomePage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        firebaseRef = FirebaseDatabase.getInstance().getReference("test")
+        firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
         arrayOfLunches = arrayListOf()
 
         fetchData()
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
 
-        val adapter = LunchAdapterClass(arrayOfLunches)
+        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
 
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
+        val scheduleOrder = findViewById<Button>(R.id.AgendarBtn)
+        scheduleOrder.setOnClickListener{
+            orderLunches()
+        }
+    }
+    fun ShowSelectedIcons( show:Boolean){
+        val scheduleBTN= findViewById<Button>(R.id.AgendarBtn)
+        if(show){
+            scheduleBTN.visibility = View.VISIBLE
+        }else{
+            scheduleBTN.visibility = View.GONE
+        }
 
     }
-    private fun getSampleLunchList(): Array<Lunch> {
-        return arrayOf(
-            Lunch(
-                id = "1",
-                name = "Chicken Sandwich",
-                description = "Grilled chicken sandwich with lettuce and tomato.",
-                imgUri = "https://example.com/images/chicken_sandwich.jpg"
-            ),
-            Lunch(
-                id = "2",
-                name = "Caesar Salad",
-                description = "Fresh romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
-                imgUri = "https://example.com/images/caesar_salad.jpg"
-            ),
-            Lunch(
-                id = "3",
-                name = "Veggie Wrap",
-                description = "Whole wheat wrap filled with hummus, cucumber, tomatoes, and spinach.",
-                imgUri = "https://example.com/images/veggie_wrap.jpg"
-            ),
-        )
+    fun orderLunches(){
+        var alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle("Agendar almuerzos")
+        alertDialog.setMessage("¿Quieres agendar estos almuerzos?")
+        alertDialog.setPositiveButton("Agendar"){_,_->
+            adapter.scheduleOrder(this)
+            ShowSelectedIcons(false)
+
+        }
+        alertDialog.setNegativeButton("Cancelar"){_,_->}
+        alertDialog.show()
     }
 
     private fun fetchData()
@@ -79,7 +86,7 @@ class HomePage : AppCompatActivity() {
 
                 val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
 
-                val adapter = LunchAdapterClass(arrayOfLunches)
+                adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
                 recyclerview.adapter = adapter
 
             }

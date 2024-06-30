@@ -1,4 +1,4 @@
-package ghoststudios.app.almuerzafacil
+package ghoststudios.app.almuerzafacil.ui.theme
 
 data class Lunch (
     val id : String? = null,

@@ -1,19 +1,20 @@
 package ghoststudios.app.almuerzafacil
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import ghoststudios.app.almuerzafacil.databinding.FragmentAddBinding
-import ghoststudios.app.almuerzafacil.databinding.FragmentHomeBinding
+import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 
 
 class AddFragment : Fragment() {
@@ -28,7 +29,7 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
-        firebaseRef = FirebaseDatabase.getInstance().getReference("launchs")
+        firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
         storageRef = FirebaseStorage.getInstance().getReference("Images")
         binding.imgLunch.setImageResource(R.drawable.tutorial)
 
@@ -45,6 +46,10 @@ class AddFragment : Fragment() {
         binding.btnSendAlmuerzo.setOnClickListener {
             saveData()
         }
+        binding.backBtn.setOnClickListener{
+            val intent = Intent(context, HomePage::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -55,8 +60,6 @@ class AddFragment : Fragment() {
         val descripcionAlmuerzo = binding.edtDA.text.toString()
         val valorAlmuerzoText = binding.edtValor.text.toString()
         val valorAlmuerzo = valorAlmuerzoText.toIntOrNull()
-
-
 
 
         if (nombreAlmuerzo.isEmpty()) {
@@ -93,8 +96,6 @@ class AddFragment : Fragment() {
                                 Toast.makeText(context, "data failed to store ", Toast.LENGTH_SHORT)
                                     .show()
                             }
-
-
                         }
                     }
             }
