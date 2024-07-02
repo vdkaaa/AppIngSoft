@@ -15,14 +15,22 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AgendarBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlmuerzoAgendados" />
 
     <Button
         android:id="@+id/AgendarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agendar"
+        android:text="@string/BotonAgendar"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAlmuerzoAgendados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BotonVerAlmuerzosAgendados"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

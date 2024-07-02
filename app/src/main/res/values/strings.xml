@@ -11,5 +11,7 @@
     <string name="ImagenAlmuerzo">Imagen del Almuerzo</string>
     //Botones
     <string name="BotonSubirAlmuerzo">Subir Almuerzo</string>
+    <string name="BotonAgendar">Agendar</string>
+    <string name="BotonVerAlmuerzosAgendados">Almuerzos Agendados</string>
     //
 </resources>

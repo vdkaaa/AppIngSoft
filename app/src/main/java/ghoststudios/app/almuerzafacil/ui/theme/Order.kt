@@ -11,6 +11,7 @@ class Order(
     var total: Int = 0,
     var wasDelivered : Boolean
 ){
+    constructor() : this(null, null, mutableMapOf(), Date(), Date(), 0, false)
     fun addLunch(lunchID: String, cantidad: Int) {
         lunches[lunchID] = (lunches[lunchID] ?: 0) + cantidad
         calculateTotal()
