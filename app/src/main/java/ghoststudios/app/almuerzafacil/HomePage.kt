@@ -49,6 +49,11 @@ class HomePage : AppCompatActivity() {
         scheduleOrder.setOnClickListener{
             orderLunches()
         }
+        val backBtn = findViewById<Button>(R.id.BcackClientOrderBTn)
+        backBtn.setOnClickListener{
+            val intent = Intent(this, ProvisionalLogIn::class.java)
+            startActivity(intent)
+        }
     }
     fun ShowSelectedIcons( show:Boolean){
         val scheduleBTN= findViewById<Button>(R.id.AgendarBtn)

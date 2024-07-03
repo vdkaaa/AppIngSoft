@@ -47,7 +47,7 @@ class AddFragment : Fragment() {
             saveData()
         }
         binding.backBtn.setOnClickListener{
-            val intent = Intent(context, HomePage::class.java)
+            val intent = Intent(context, ProvisionalLogIn::class.java)
             startActivity(intent)
         }
 

@@ -1,6 +1,8 @@
 package ghoststudios.app.almuerzafacil
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +52,11 @@ class LunchesUser : AppCompatActivity() {
         recyclerview.adapter = adapter
 
         fetchUserOrders()
+        val backBtn = findViewById<Button>(R.id.ordersBackBtn)
+        backBtn.setOnClickListener{
+            val intent = Intent(this, HomePage::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchUserOrders() {
