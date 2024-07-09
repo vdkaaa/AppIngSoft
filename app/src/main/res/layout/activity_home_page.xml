@@ -40,13 +40,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/BcackClientOrderBTn"
+    <TextView
+        android:id="@+id/txtIDUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Atrás"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="TextView"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

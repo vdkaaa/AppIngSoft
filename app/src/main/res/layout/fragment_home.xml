@@ -17,5 +17,49 @@
         android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAlmuerzosEmpresa"
+        android:layout_width="552dp"
+        android:layout_height="623dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlmuerzoPedidos" />
+
+    <Button
+        android:id="@+id/btnAlmuerzoPedidos"
+        android:layout_width="166dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="1dp"
+        android:text="Almuerzos Pedidos"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAlmuerzosEmpresa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtUIDUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="35dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAlmuerzosEmpresa"
+        app:layout_constraintEnd_toStartOf="@+id/btnAlmuerzoPedidos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

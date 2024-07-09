@@ -13,5 +13,20 @@
     <string name="BotonSubirAlmuerzo">Subir Almuerzo</string>
     <string name="BotonAgendar">Agendar</string>
     <string name="BotonVerAlmuerzosAgendados">Almuerzos Agendados</string>
-    //
+    // Login
+    <string name="prompt_IniciarSesion">Iniciar sesion</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_correo">Correo electronico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Bienvenid@ a Almuerzafacil !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">"Iniciar sesion"</string>
+    <string name="sign_in">"Registrarse"</string>
+    <string name="sign_in_title">"Registro"</string>
+    <string name="volver">"Volver"</string>
+
 </resources>

@@ -47,7 +47,7 @@ class AddFragment : Fragment() {
             saveData()
         }
         binding.backBtn.setOnClickListener{
-            val intent = Intent(context, ProvisionalLogIn::class.java)
+            val intent = Intent(context, ListCompanyLunches::class.java)
             startActivity(intent)
         }
 
@@ -96,6 +96,8 @@ class AddFragment : Fragment() {
                                 Toast.makeText(context, "data failed to store ", Toast.LENGTH_SHORT)
                                     .show()
                             }
+                            val intent = Intent(context, ListCompanyLunches::class.java)
+                            startActivity(intent)
                         }
                     }
             }

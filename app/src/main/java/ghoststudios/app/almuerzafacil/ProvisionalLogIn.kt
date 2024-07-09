@@ -23,7 +23,7 @@ class ProvisionalLogIn : AppCompatActivity() {
         var btnClient = findViewById<Button>(R.id.buttonEntrarCliente)
 
         btnCompany.setOnClickListener{
-            val intent = Intent(this, ListAlmuerzosEmpresa::class.java)
+            val intent = Intent(this, ListCompanyLunches::class.java)
             startActivity(intent)
         }
         btnClient.setOnClickListener{

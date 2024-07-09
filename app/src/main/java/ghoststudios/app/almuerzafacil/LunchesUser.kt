@@ -1,5 +1,6 @@
 package ghoststudios.app.almuerzafacil
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -83,6 +84,7 @@ class LunchesUser : AppCompatActivity() {
 
     private fun fetchLunchDetails(lunchId: String) {
         firebaseRef.child(lunchId).addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val lunch = snapshot.getValue(Lunch::class.java)
                 lunch?.let {
