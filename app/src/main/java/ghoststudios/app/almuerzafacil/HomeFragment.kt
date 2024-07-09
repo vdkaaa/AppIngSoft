@@ -59,10 +59,7 @@ class HomeFragment : Fragment() {
         binding.recyclerViewAlmuerzosEmpresa.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewAlmuerzosEmpresa.adapter = adapter
 
-        binding.btnVolver.setOnClickListener {
-            val intent = Intent(context, ProvisionalLogIn::class.java)
-            startActivity(intent)
-        }
+
 
         return binding.root
     }
