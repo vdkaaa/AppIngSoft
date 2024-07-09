@@ -7,14 +7,14 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="ghoststudios.app.almuerzafacil.HomeFragment"
-        android:label="fragment_home">
+        android:label="Almuerzos subidos">
         <!-- Otros atributos de tu fragmento home -->
     </fragment>
 
     <fragment
         android:id="@+id/addFragment"
         android:name="ghoststudios.app.almuerzafacil.AddFragment"
-        android:label="fragment_add">
+        android:label="Añadir Almuerzo">
         <!-- Otros atributos de tu fragmento add -->
     </fragment>
 
