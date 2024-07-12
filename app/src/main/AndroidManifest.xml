@@ -41,7 +41,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".ProvisionalLogIn"
+            android:name=".ui.theme.PedidosEmpresa"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light" />
 
