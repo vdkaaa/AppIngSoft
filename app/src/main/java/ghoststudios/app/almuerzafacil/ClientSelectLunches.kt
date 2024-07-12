@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -22,78 +21,49 @@ import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.LunchAdapterClass
 import ghoststudios.app.almuerzafacil.ui.theme.User
 
-enum class ProviderType {
-    BASIC
-}
-
-class HomePage : AppCompatActivity() {
-
+class ClientSelectLunches : AppCompatActivity() {
     private lateinit var firebaseRef: DatabaseReference
     private lateinit var arrayOfLunches: ArrayList<Lunch>
     private lateinit var adapter: LunchAdapterClass
-
-    private var user: User? = null
+    private lateinit var email :String
+    private lateinit var uid : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home_page)
+        setContentView(R.layout.activity_client_select_lunches)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Obtener información del usuario desde el Intent
-        val email = intent.getStringExtra("email")
-        val uid = intent.getStringExtra("uid")
-        user = User(id = uid, email = email)
+        email = intent.getStringExtra("email")!!
+        uid = intent.getStringExtra("uid")!!
+        val day = intent.getIntExtra("dayOfWeek", 1)!!
 
-        // Resto de la configuración
+        Toast.makeText(this, "dia de la semana {$day}", Toast.LENGTH_SHORT).show()
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
         arrayOfLunches = arrayListOf()
-        ShowOrderUserLunches()
-        fetchData()
 
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
-        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
+        val recyclerview = findViewById<RecyclerView>(R.id.rv_OrderLunchesClient)
         recyclerview.layoutManager = LinearLayoutManager(this)
+        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
         recyclerview.adapter = adapter
 
-        val scheduleOrder = findViewById<Button>(R.id.AgendarBtn)
-        scheduleOrder.setOnClickListener {
-            orderLunches()
+        findViewById<Button>(R.id.OrderLunch_btn).setOnClickListener{
+
+            val intent = Intent(this , OrderALunchSettings::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("uid", uid)
+            intent.putExtra("dayOfWeek", day)
+            val num = adapter.getListOfLunches().size
+            Toast.makeText(this,"tam{$num}",Toast.LENGTH_SHORT).show()
+            intent.putParcelableArrayListExtra("lunches", adapter.getListOfLunches())
+            startActivity(intent)
         }
 
-        /*val backBtn = findViewById<Button>(R.id.BcackClientOrderBTn)
-        backBtn.setOnClickListener {
-            val intent = Intent(this, ProvisionalLogIn::class.java)
-             startActivity(intent)
-        }*/
-
-        // Uso de la información del usuario
-        user?.let {
-            Toast.makeText(this, "Bienvenido ${it.email}", Toast.LENGTH_SHORT).show()
-            val txtUser = findViewById<TextView>(R.id.txtIDUser)
-            txtUser.text = "UID: ${it.id}"
-        }
-    }
-
-    private fun ShowSelectedIcons(show: Boolean) {
-        val scheduleBTN = findViewById<Button>(R.id.AgendarBtn)
-        scheduleBTN.visibility = if (show) View.VISIBLE else View.GONE
-    }
-
-    private fun orderLunches() {
-        val alertDialog = AlertDialog.Builder(this)
-        alertDialog.setTitle("Agendar almuerzos")
-        alertDialog.setMessage("¿Quieres agendar estos almuerzos?")
-        alertDialog.setPositiveButton("Agendar") { _, _ ->
-            adapter.scheduleOrder(this)
-            ShowSelectedIcons(false)
-        }
-        alertDialog.setNegativeButton("Cancelar") { _, _ -> }
-        alertDialog.show()
+        fetchData()
     }
 
     private fun fetchData() {
@@ -107,7 +77,7 @@ class HomePage : AppCompatActivity() {
                     }
                 }
                 Toast.makeText(baseContext, "Loading lunches: ${arrayOfLunches.size}", Toast.LENGTH_SHORT).show()
-                val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
+                val recyclerview = findViewById<RecyclerView>(R.id.rv_OrderLunchesClient)
                 adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
                 recyclerview.adapter = adapter
             }
@@ -118,11 +88,9 @@ class HomePage : AppCompatActivity() {
         })
     }
 
-    private fun ShowOrderUserLunches() {
-        val lunchesOrders = findViewById<Button>(R.id.btnAlmuerzoAgendados)
-        lunchesOrders.setOnClickListener {
-            val intent = Intent(this, LunchesUser::class.java)
-            startActivity(intent)
-        }
+    private fun ShowSelectedIcons(show: Boolean) {
+        val scheduleBTN = findViewById<Button>(R.id.OrderLunch_btn)
+        scheduleBTN.visibility = if (show) View.VISIBLE else View.GONE
     }
+
 }

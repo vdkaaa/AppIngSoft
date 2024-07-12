@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderALunchSettings">
+
+    <TextView
+        android:id="@+id/cantidadText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/CantidadAlmuerzosAgendados"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/HoraDeRetiro"
+        app:layout_constraintBottom_toTopOf="@+id/horaARecibir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/cantidadInputField"
+        android:layout_width="78dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="128dp"
+        android:ems="10"
+        android:hint="1"
+        android:inputType="phone"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/ServirOLlevar"
+        android:layout_width="82dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="28dp"
+        android:checkedButton="@id/servirRadioButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cantidadText">
+
+        <RadioButton
+            android:id="@+id/servirRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/OpcionComer1" />
+
+        <RadioButton
+            android:id="@+id/llevarRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/OpcionComer2" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/horaARecibir"
+        android:layout_width="276dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginEnd="308dp"
+        android:layout_marginBottom="20dp"
+        android:checkedButton="@id/rb_1300"
+        app:layout_constraintBottom_toTopOf="@+id/AgendarAlmuerzoBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_1130"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="11:30 am" />
+
+        <RadioButton
+            android:id="@+id/rb_1200"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12:00 pm" />
+
+        <RadioButton
+            android:id="@+id/rb_1230"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12:30 pm" />
+
+        <RadioButton
+            android:id="@+id/rb_1300"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="13:00 pm" />
+
+        <RadioButton
+            android:id="@+id/rb_1330"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="13:30 pm" />
+
+        <RadioButton
+            android:id="@+id/rb_1400"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="14:00 pm" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/AgendarAlmuerzoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/AgendarAlmuerzoBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
