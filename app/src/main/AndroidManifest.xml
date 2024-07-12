@@ -15,15 +15,18 @@
         android:theme="@style/Theme.AppCompat"
         tools:targetApi="31">
         <activity
+            android:name=".ProvisionalLogIn"
+            android:exported="false" />
+        <activity
             android:name=".ListAlmuerzosEmpresa"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".LunchesUser"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".ProvisionalLogIn"
+            android:name=".ui.theme.PedidosEmpresa"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light">
             <intent-filter>

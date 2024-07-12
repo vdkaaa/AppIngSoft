@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:id="@+id/CardViewLunches"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewLunch"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:layout_marginEnd="16dp"
-    card_view:cardBackgroundColor = "#227C9D"
-    card_view:cardCornerRadius="20dp"
-    card_view:elevation="6dp"
-    card_view:contentPadding="4dp">
+    app:cardBackgroundColor="#227C9D"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp"
+    app:contentPadding="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/aaaaa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
-
-
-        <ImageView
-            android:id="@+id/imagencardview"
-            android:layout_width="70dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="12dp"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            card_view:srcCompat="@tools:sample/avatars" />
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/aaaaaaaaaaaaaa"
+            android:id="@+id/PtextViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/imagencardview"
-            android:text="Alooooo"
-            android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/imagencardview"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Nombre de la Persona"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/desc"
-            android:layout_width="194dp"
-            android:layout_height="69dp"
-            android:layout_below="@+id/imagencardview"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="28dp"
-            android:layout_toEndOf="@id/imagencardview"
-            android:text="wenas"
-            android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/imagencardview"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/cv_priceLunch"
-            android:layout_width="154dp"
+            android:id="@+id/PtextViewTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/desc"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="104dp"
-            android:layout_toEndOf="@id/imagencardview"
-            android:text="Wenaas"
-            android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/imagencardview"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Hora del Pedido"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PtextViewName" />
 
-        <ImageView
-            android:id="@+id/isSelectedTick"
-            android:layout_width="39dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:visibility="gone"
+        <TextView
+            android:id="@+id/PtextViewLunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Almuerzo Pedido"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PtextViewTime" />
+
+        <TextView
+            android:id="@+id/PtextViewQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:text="Cantidad"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/check_mark" />
+            app:layout_constraintTop_toBottomOf="@+id/PtextViewTime2" />
+
+        <TextView
+            android:id="@+id/PtextViewForHereOrToGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Para Llevar o Servir en Local"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PtextViewLunch" />
+
+        <TextView
+            android:id="@+id/PtextViewTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:text="Hora Retiro"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PtextViewName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
-
-
-
