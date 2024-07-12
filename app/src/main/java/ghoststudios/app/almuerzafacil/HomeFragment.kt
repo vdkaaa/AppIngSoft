@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
         ShowOrderUserLunches()
         fetchData()
 
-        adapter = LunchAdapterClass(arrayOfLunches) { show -> showMenu(show) }
+        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
 
         binding.recyclerViewAlmuerzosEmpresa.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewAlmuerzosEmpresa.adapter = adapter
@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
         ShowOrderUserLunches()
         fetchData()
 
-        adapter = LunchAdapterClass(arrayOfLunches) { show -> showMenu(show) }
+        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
 
         binding.recyclerViewAlmuerzosEmpresa.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewAlmuerzosEmpresa.adapter = adapter
@@ -67,7 +67,8 @@ class HomeFragment : Fragment() {
     private fun showMenu(show: Boolean) {
         // Implementar lógica para mostrar u ocultar menú si es necesario
     }
-
+    private fun ShowSelectedIcons(show: Boolean) {
+    }
     fun orderLunches() {
         val alertDialog = AlertDialog.Builder(requireContext())
         alertDialog.setTitle("Agendar almuerzos")
