@@ -12,7 +12,7 @@ class Order(
     var total: Int = 0,
     var wasDelivered : Boolean,
     var eatAtRestaurant:Boolean,
-    var amount:Int
+    var amount:Int = 1
 ){
     constructor() : this(null, null, "", Date(), Date(), 0, false, true, 1)
 
