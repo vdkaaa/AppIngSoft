@@ -19,14 +19,18 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.LunchAdapterClass
+import ghoststudios.app.almuerzafacil.ui.theme.LunchesPosted
 import ghoststudios.app.almuerzafacil.ui.theme.User
 
 class ClientSelectLunches : AppCompatActivity() {
     private lateinit var firebaseRef: DatabaseReference
+    private lateinit var firebaseRefLunchesPosted: DatabaseReference
     private lateinit var arrayOfLunches: ArrayList<Lunch>
+    private lateinit var arrayOfLunchesToShow: ArrayList<Lunch>
     private lateinit var adapter: LunchAdapterClass
     private lateinit var email :String
     private lateinit var uid : String
+    private var day = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +44,18 @@ class ClientSelectLunches : AppCompatActivity() {
 
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
-        val day = intent.getIntExtra("dayOfWeek", 1)!!
+        day = intent.getIntExtra("dayOfWeek", 1)!!
 
-        Toast.makeText(this, "dia de la semana {$day}", Toast.LENGTH_SHORT).show()
+        println("ClientSelectLunches day num $day")
+        //Toast.makeText(this, "dia de la semana $day", Toast.LENGTH_SHORT).show()
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
+        firebaseRefLunchesPosted = FirebaseDatabase.getInstance().getReference("lunchesPosted")
         arrayOfLunches = arrayListOf()
+        arrayOfLunchesToShow = arrayListOf()
 
         val recyclerview = findViewById<RecyclerView>(R.id.rv_OrderLunchesClient)
         recyclerview.layoutManager = LinearLayoutManager(this)
-        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
+        adapter = LunchAdapterClass(arrayOfLunchesToShow){show ->ShowSelectedIcons(show)}
         recyclerview.adapter = adapter
 
         findViewById<Button>(R.id.OrderLunch_btn).setOnClickListener{
@@ -58,12 +65,12 @@ class ClientSelectLunches : AppCompatActivity() {
             intent.putExtra("uid", uid)
             intent.putExtra("dayOfWeek", day)
             val num = adapter.getListOfLunches().size
-            Toast.makeText(this,"tam{$num}",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"tam $num",Toast.LENGTH_SHORT).show()
             intent.putParcelableArrayListExtra("lunches", adapter.getListOfLunches())
             startActivity(intent)
         }
-
         fetchData()
+
     }
 
     private fun fetchData() {
@@ -75,10 +82,34 @@ class ClientSelectLunches : AppCompatActivity() {
                         val lunch = lunchesSnap.getValue(Lunch::class.java)
                         arrayOfLunches.add(lunch!!)
                     }
+                    getLunches()
                 }
-                Toast.makeText(baseContext, "Loading lunches: ${arrayOfLunches.size}", Toast.LENGTH_SHORT).show()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(baseContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+    private fun getLunches() {
+        firebaseRefLunchesPosted.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                arrayOfLunchesToShow.clear()
+                if (snapshot.exists()) {
+                    for (lunchesSnap in snapshot.children) {
+                        val lunch = lunchesSnap.getValue(LunchesPosted::class.java)
+                        for (item in arrayOfLunches){
+                            for ( lunchIDToCheck in lunch!!.lunchPosted){
+                                if(item.id == lunchIDToCheck && lunch.datePosted!!.day == day){
+                                    arrayOfLunchesToShow.add(item)
+                                    break
+                                }
+                            }
+                        }
+                    }
+                }
+                //Toast.makeText(baseContext, "Loading lunches: ${arrayOfLunches.size}", Toast.LENGTH_SHORT).show()
                 val recyclerview = findViewById<RecyclerView>(R.id.rv_OrderLunchesClient)
-                adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
+                adapter = LunchAdapterClass(arrayOfLunchesToShow){show ->ShowSelectedIcons(show)}
                 recyclerview.adapter = adapter
             }
 
@@ -87,6 +118,7 @@ class ClientSelectLunches : AppCompatActivity() {
             }
         })
     }
+
 
     private fun ShowSelectedIcons(show: Boolean) {
         val scheduleBTN = findViewById<Button>(R.id.OrderLunch_btn)

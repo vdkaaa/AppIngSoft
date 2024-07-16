@@ -15,20 +15,29 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".OrdersOfClient"
+            android:exported="false" />
+        <activity
+            android:name=".AddLunch"
+            android:exported="false" />
+        <activity
+            android:name=".PostLunches"
+            android:exported="false" />
+        <activity
+            android:name=".HomeCompany"
+            android:exported="false" />
+        <activity
             android:name=".ClientSelectLunches"
             android:exported="false" />
         <activity
             android:name=".HomeClient"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="false" />
         <activity
             android:name=".ChooseDayOfTheWeek"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="false" />
         <activity
             android:name=".OrderALunchSettings"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="false" />
         <activity
             android:name=".Authentication.ui.RegisterActivity"
             android:exported="true"
@@ -53,8 +62,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.theme.PedidosEmpresa"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

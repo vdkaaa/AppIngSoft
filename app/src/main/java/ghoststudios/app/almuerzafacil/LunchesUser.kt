@@ -70,7 +70,7 @@ class LunchesUser : AppCompatActivity() {
                         val order = orderSnap.getValue(Order::class.java)
                         order?.let {
                             //for (lunchId in it.lunches.keys) {
-                             //   fetchLunchDetails(lunchId)
+                            //    fetchLunchDetails(lunchId)
                             //}
                         }
                     }

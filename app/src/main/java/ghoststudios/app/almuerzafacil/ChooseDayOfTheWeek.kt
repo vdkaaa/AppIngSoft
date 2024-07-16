@@ -46,6 +46,7 @@ class ChooseDayOfTheWeek : AppCompatActivity() {
 
     private fun setResultAndFinish(dayOfWeek: Int) {
         val resultIntent = Intent()
+        println("returned day $dayOfWeek")
         resultIntent.putExtra("selected_day_of_week", dayOfWeek)
         setResult(Activity.RESULT_OK, resultIntent)
         finish()

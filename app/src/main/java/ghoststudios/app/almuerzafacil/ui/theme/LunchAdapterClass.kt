@@ -111,8 +111,9 @@ class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
         isEnable = false
 
     }
+
     fun getListOfLunches():ArrayList<Lunch>{
-        var listOfLunch = ArrayList<Lunch>()
+        val listOfLunch = ArrayList<Lunch>()
         if(itemSelectedList.isNotEmpty()) {
             for (index in itemSelectedList){
                 listOfLunch.add(lunches[index])
@@ -121,4 +122,24 @@ class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
         return listOfLunch
     }
 
+    fun getListOfLunchesIDs():ArrayList<String>{
+        val listOfId = ArrayList<String>()
+
+        if(itemSelectedList.isNotEmpty()) {
+            for (index in itemSelectedList){
+                listOfId.add(lunches[index].id!!)
+            }
+        }
+
+        return listOfId
+    }
+
+    fun unSelectLunches(){
+        for (index in itemSelectedList) {
+            viewHolders[index]?.itemTick?.visibility = View.GONE
+        }
+        itemSelectedList.clear()
+        showMenu(false)
+        isEnable = false
+    }
 }

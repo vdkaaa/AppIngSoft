@@ -39,7 +39,9 @@ class OrderALunchSettings : AppCompatActivity() {
         uid = intent.getStringExtra("uid")!!
         val day = intent.getIntExtra("dayOfWeek", 1)!!
 
-        Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
+        val aa = getNextDayOfWeek(day)
+        println("OrderALunchSettings day num $day , getDayOfWeek $aa")
+        Toast.makeText(this, "OrderALunchSettings day num $day , getDayOfWeek $aa", Toast.LENGTH_SHORT).show()
 
         Toast.makeText(this, "size ${listOfLunches?.size}", Toast.LENGTH_SHORT).show()
         eatType = findViewById(R.id.ServirOLlevar)

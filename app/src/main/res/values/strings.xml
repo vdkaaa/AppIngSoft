@@ -49,4 +49,18 @@
     //HomeCliente
     <string name="agendarAlmuerzo">"Agendar almuerzos"</string>
     <string name="verAlmuerzosAgendados">"Ver almuerzos agendados"</string>
+
+    //HomeEmpresa
+    <string name="titleHomeCompany">"Home"</string>
+    <string name="createALunch">"Crear un almuerzo"</string>
+    <string name="seePendingOrders">"Ver almuerzos agendados"</string>
+    <string name="uploadLunch">"Subir almuerzo"</string>
+
+    //Publicar almuerzos empresa
+    <string name="postLunchesTitle">"Almuerzos disponibles"</string>
+    <string name="postLunchesButton">"Publicar"</string>
+
+    //Ordenes del cliente
+    <string name="ClientsOrdersTitle">"Mis pedidos"</string>
+
 </resources>
