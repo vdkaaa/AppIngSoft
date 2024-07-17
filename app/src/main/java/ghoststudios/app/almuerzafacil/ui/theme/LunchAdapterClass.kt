@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.firebase.database.FirebaseDatabase
@@ -16,7 +17,8 @@ import ghoststudios.app.almuerzafacil.R
 import java.util.Date
 
 class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
-                        private val showMenu:(Boolean) ->Unit ):
+                        private val showMenu:(Boolean) ->Unit
+):
     Adapter<LunchAdapterClass.ViewHolderClass>() {
     private var isEnable = false
     private var itemSelectedList = mutableListOf<Int>()
@@ -71,6 +73,7 @@ class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
         showMenu(true)
         holder.itemTick.visibility = View.VISIBLE
     }
+
     fun scheduleOrder(cont:Context){
 
         if(itemSelectedList.isNotEmpty()){
@@ -86,12 +89,14 @@ class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
                 dateOrdered = currentDate,
                 dateToDeliver = currentDate,
                 total = 0,
-                wasDelivered = false
+                wasDelivered = false,
+                eatAtRestaurant = true,
+                amount = 1
             )
-            for (index in itemSelectedList){
-                order.addLunch(lunches[index].id!!, 1)
-                viewHolders[index]?.itemTick?.visibility = View.GONE
-            }
+            //for (index in itemSelectedList){
+            //    order.addLunch(lunches[index].id!!, 1)
+            //    viewHolders[index]?.itemTick?.visibility = View.GONE
+            //}
 
 
             firebaseRef.child(orderId).setValue(order).addOnCompleteListener {
@@ -107,4 +112,34 @@ class LunchAdapterClass(private val lunches: ArrayList<Lunch>,
 
     }
 
+    fun getListOfLunches():ArrayList<Lunch>{
+        val listOfLunch = ArrayList<Lunch>()
+        if(itemSelectedList.isNotEmpty()) {
+            for (index in itemSelectedList){
+                listOfLunch.add(lunches[index])
+            }
+        }
+        return listOfLunch
+    }
+
+    fun getListOfLunchesIDs():ArrayList<String>{
+        val listOfId = ArrayList<String>()
+
+        if(itemSelectedList.isNotEmpty()) {
+            for (index in itemSelectedList){
+                listOfId.add(lunches[index].id!!)
+            }
+        }
+
+        return listOfId
+    }
+
+    fun unSelectLunches(){
+        for (index in itemSelectedList) {
+            viewHolders[index]?.itemTick?.visibility = View.GONE
+        }
+        itemSelectedList.clear()
+        showMenu(false)
+        isEnable = false
+    }
 }

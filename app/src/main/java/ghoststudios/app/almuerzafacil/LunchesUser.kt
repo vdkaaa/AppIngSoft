@@ -45,7 +45,7 @@ class LunchesUser : AppCompatActivity() {
         arrayOfLunches = arrayListOf()
 
         // Initialize the adapter
-        adapter = LunchAdapterClass(arrayOfLunches) { show -> showMenu(show) }
+        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
 
         // Set up RecyclerView
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewUserOrder)
@@ -59,7 +59,8 @@ class LunchesUser : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    private fun ShowSelectedIcons(show: Boolean) {
+    }
     private fun fetchUserOrders() {
         ordersRef.orderByChild("idClient").equalTo(userId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -68,9 +69,9 @@ class LunchesUser : AppCompatActivity() {
                     for (orderSnap in snapshot.children) {
                         val order = orderSnap.getValue(Order::class.java)
                         order?.let {
-                            for (lunchId in it.lunches.keys) {
-                                fetchLunchDetails(lunchId)
-                            }
+                            //for (lunchId in it.lunches.keys) {
+                            //    fetchLunchDetails(lunchId)
+                            //}
                         }
                     }
                 }

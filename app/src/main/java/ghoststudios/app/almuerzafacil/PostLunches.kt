@@ -1,13 +1,10 @@
 package ghoststudios.app.almuerzafacil
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,82 +17,61 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.LunchAdapterClass
-import ghoststudios.app.almuerzafacil.ui.theme.User
+import ghoststudios.app.almuerzafacil.ui.theme.LunchesPosted
+import java.util.Calendar
+import java.util.Date
 
-enum class ProviderType {
-    BASIC
-}
-
-class HomePage : AppCompatActivity() {
+class PostLunches : AppCompatActivity() {
 
     private lateinit var firebaseRef: DatabaseReference
+    private lateinit var firebaseRefStoreData: DatabaseReference
     private lateinit var arrayOfLunches: ArrayList<Lunch>
     private lateinit var adapter: LunchAdapterClass
-
-    private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home_page)
+        setContentView(R.layout.activity_post_lunches)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val day = intent.getIntExtra("dayOfWeek", 1)
+        val dayNextWeek = getNextDayOfWeek(day)
 
-        // Obtener información del usuario desde el Intent
-        val email = intent.getStringExtra("email")
-        val uid = intent.getStringExtra("uid")
-        user = User(id = uid, email = email)
+        println("PostLunches activity day $day, next week $dayNextWeek")
+        //Toast.makeText(this, "dia $day", Toast.LENGTH_SHORT).show()
 
-        // Resto de la configuración
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
+        firebaseRefStoreData = FirebaseDatabase.getInstance().getReference("lunchesPosted")
         arrayOfLunches = arrayListOf()
-        ShowOrderUserLunches()
-        fetchData()
 
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
-        adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
+        val recyclerview = findViewById<RecyclerView>(R.id.rv_PostLunches)
         recyclerview.layoutManager = LinearLayoutManager(this)
+        adapter = LunchAdapterClass(arrayOfLunches){show ->showSelectedIcons(show)}
         recyclerview.adapter = adapter
 
-        val scheduleOrder = findViewById<Button>(R.id.AgendarBtn)
-        scheduleOrder.setOnClickListener {
-            orderLunches()
+        findViewById<Button>(R.id.btn_PostLunches).setOnClickListener{
+
+            val dateToPost = getNextDayOfWeek(day)
+            val listOfIDs = adapter.getListOfLunchesIDs()
+            val lunchesId = firebaseRef.push().key!!
+
+            val lunches = LunchesPosted(lunchesId, listOfIDs, dateToPost)
+
+            adapter.unSelectLunches()
+
+            firebaseRefStoreData.child(lunchesId).setValue(lunches).addOnCompleteListener {
+                Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
-        /*val backBtn = findViewById<Button>(R.id.BcackClientOrderBTn)
-        backBtn.setOnClickListener {
-            val intent = Intent(this, ProvisionalLogIn::class.java)
-             startActivity(intent)
-        }*/
-
-        // Uso de la información del usuario
-        user?.let {
-            Toast.makeText(this, "Bienvenido ${it.email}", Toast.LENGTH_SHORT).show()
-            val txtUser = findViewById<TextView>(R.id.txtIDUser)
-            txtUser.text = "UID: ${it.id}"
-        }
+        fetchData()
     }
-
-    private fun ShowSelectedIcons(show: Boolean) {
-        val scheduleBTN = findViewById<Button>(R.id.AgendarBtn)
-        scheduleBTN.visibility = if (show) View.VISIBLE else View.GONE
-    }
-
-    private fun orderLunches() {
-        val alertDialog = AlertDialog.Builder(this)
-        alertDialog.setTitle("Agendar almuerzos")
-        alertDialog.setMessage("¿Quieres agendar estos almuerzos?")
-        alertDialog.setPositiveButton("Agendar") { _, _ ->
-            adapter.scheduleOrder(this)
-            ShowSelectedIcons(false)
-        }
-        alertDialog.setNegativeButton("Cancelar") { _, _ -> }
-        alertDialog.show()
-    }
-
     private fun fetchData() {
         firebaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -107,8 +83,8 @@ class HomePage : AppCompatActivity() {
                     }
                 }
                 Toast.makeText(baseContext, "Loading lunches: ${arrayOfLunches.size}", Toast.LENGTH_SHORT).show()
-                val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
-                adapter = LunchAdapterClass(arrayOfLunches){show ->ShowSelectedIcons(show)}
+                val recyclerview = findViewById<RecyclerView>(R.id.rv_PostLunches)
+                adapter = LunchAdapterClass(arrayOfLunches){show ->showSelectedIcons(show)}
                 recyclerview.adapter = adapter
             }
 
@@ -118,11 +94,24 @@ class HomePage : AppCompatActivity() {
         })
     }
 
-    private fun ShowOrderUserLunches() {
-        val lunchesOrders = findViewById<Button>(R.id.btnAlmuerzoAgendados)
-        lunchesOrders.setOnClickListener {
-            val intent = Intent(this, LunchesUser::class.java)
-            startActivity(intent)
+    private fun showSelectedIcons(show: Boolean) {
+         val btnPost = findViewById<Button>(R.id.btn_PostLunches)
+        btnPost.visibility = if (show) View.VISIBLE else View.GONE
+    }
+
+    private fun getNextDayOfWeek(dayOfWeek: Int): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()
+
+        val daysUntilNextDay = (dayOfWeek - calendar.get(Calendar.DAY_OF_WEEK) + 7) % 7
+
+        if (daysUntilNextDay == 0) {
+            calendar.add(Calendar.WEEK_OF_YEAR, 1)
+        } else {
+            calendar.add(Calendar.DAY_OF_YEAR, daysUntilNextDay)
         }
+
+        calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        return calendar.time
     }
 }

@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import ghoststudios.app.almuerzafacil.HomeClient
+import ghoststudios.app.almuerzafacil.HomeCompany
 import ghoststudios.app.almuerzafacil.HomePage
 import ghoststudios.app.almuerzafacil.ListCompanyLunches
 import ghoststudios.app.almuerzafacil.ProviderType
@@ -41,9 +43,9 @@ class LoginActivity : AppCompatActivity() {
                             )
 
                             if(binding.emailEditTextLogin.text.toString() == "samquiroz385@gmail.com"){
-                                LoadActivity(ListCompanyLunches::class.java, loggedInUser)
+                                LoadActivity(HomeCompany::class.java, loggedInUser)
                             }else{
-                                LoadActivity(HomePage::class.java, loggedInUser)
+                                LoadActivity(HomeClient::class.java, loggedInUser)
                             }
 
 

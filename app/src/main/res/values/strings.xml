@@ -29,4 +29,38 @@
     <string name="sign_in_title">"Registro"</string>
     <string name="volver">"Volver"</string>
 
+    //Config agendar
+    <string name="OpcionComer1">"Servir"</string>
+    <string name="OpcionComer2">"Llevar"</string>
+    <string name="HoraDeRetiro">"hora"</string>
+    <string name="AgendarAlmuerzoBtn">"Agendar"</string>
+    <string name="CantidadAlmuerzosAgendados">"Cantidad"</string>
+
+    //dias de la semana
+    <string name="diasDisponibles">"Días disponibles"</string>
+    <string name="diaLunes">"Lunes"</string>
+    <string name="diaMartes">"Martes"</string>
+    <string name="diaMiercoles">"Miércoles"</string>
+    <string name="diaJueves">"Jueves"</string>
+    <string name="diaViernes">"Viernes"</string>
+    <string name="diaSabado">"Sábado"</string>
+    <string name="diaDomingo">"Domingo"</string>
+
+    //HomeCliente
+    <string name="agendarAlmuerzo">"Agendar almuerzos"</string>
+    <string name="verAlmuerzosAgendados">"Ver almuerzos agendados"</string>
+
+    //HomeEmpresa
+    <string name="titleHomeCompany">"Home"</string>
+    <string name="createALunch">"Crear un almuerzo"</string>
+    <string name="seePendingOrders">"Ver almuerzos agendados"</string>
+    <string name="uploadLunch">"Subir almuerzo"</string>
+
+    //Publicar almuerzos empresa
+    <string name="postLunchesTitle">"Almuerzos disponibles"</string>
+    <string name="postLunchesButton">"Publicar"</string>
+
+    //Ordenes del cliente
+    <string name="ClientsOrdersTitle">"Mis pedidos"</string>
+
 </resources>
