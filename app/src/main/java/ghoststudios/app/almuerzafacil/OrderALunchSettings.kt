@@ -1,5 +1,6 @@
 package ghoststudios.app.almuerzafacil
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -114,6 +115,10 @@ class OrderALunchSettings : AppCompatActivity() {
 
             firebaseRef.child(orderId).setValue(order).addOnCompleteListener {
                 Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeClient::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("uid", uid)
+                startActivity(intent)
             }.addOnFailureListener {
                 Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)
                     .show()

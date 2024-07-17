@@ -24,6 +24,8 @@ class AddLunch : AppCompatActivity() {
     private var uri: Uri? = null
     private lateinit var storageRef: StorageReference
     private lateinit var firebaseRef: DatabaseReference
+    private lateinit var email :String
+    private lateinit var uid : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,8 @@ class AddLunch : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        email = intent.getStringExtra("email")!!
+        uid = intent.getStringExtra("uid")!!
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
         storageRef = FirebaseStorage.getInstance().getReference("Images")
@@ -97,6 +101,7 @@ class AddLunch : AppCompatActivity() {
                             Toast.makeText(this, "image stored", Toast.LENGTH_SHORT).show()
                             firebaseRef.child(lunchId).setValue(lunch).addOnCompleteListener {
                                 Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+
                             }.addOnFailureListener {
                                 Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)
                                     .show()

@@ -34,8 +34,10 @@ class HomeClient : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_DAY)
         }
         findViewById<Button>(R.id.btn_seeOrderLunch).setOnClickListener{
-            val intent = Intent(this, ChooseDayOfTheWeek::class.java)
-            startActivityForResult(intent, REQUEST_CODE_CHOOSE_DAY_SEE_ORDER)
+            val intent = Intent(this, OrdersOfClient::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("uid", uid)
+            startActivity(intent)
         }
 
     }

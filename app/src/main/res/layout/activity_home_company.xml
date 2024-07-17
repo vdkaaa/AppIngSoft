@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeCompany">
+    android:visibility="visible"
+    tools:context=".HomeCompany"
+    tools:visibility="visible">
 
     <Button
         android:id="@+id/BtnCreateLunchHomeComany"

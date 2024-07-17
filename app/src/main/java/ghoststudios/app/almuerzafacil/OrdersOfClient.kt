@@ -25,7 +25,6 @@ class OrdersOfClient : AppCompatActivity() {
     private lateinit var ordersRef: DatabaseReference
     private lateinit var arrayOfOrders: ArrayList<Order>
     private lateinit var adapter: PedidosAdapterClass
-    private var day = 1
     private lateinit var email :String
     private lateinit var uid : String
 
@@ -38,11 +37,10 @@ class OrdersOfClient : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        day = intent.getIntExtra("dayOfWeek", 1)
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
 
-        println("OrdersOfClient day num $day")
+        //println("OrdersOfClient day num $day")
         //Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
 
         ordersRef = FirebaseDatabase.getInstance().getReference("orders")
@@ -62,26 +60,7 @@ class OrdersOfClient : AppCompatActivity() {
 
 
     }
-    private fun fetchOrder2() {
-        ordersRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                arrayOfOrders.clear()
-                if (snapshot.exists()) {
-                    for (orderSnap in snapshot.children) {
-                        val order = orderSnap.getValue(Order::class.java)
-                        order?.let {
-                            arrayOfOrders.add(it)
-                        }
-                    }
-                    adapter.notifyDataSetChanged()
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(baseContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
     private fun fetchOrders() {
         ordersRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -93,9 +72,9 @@ class OrdersOfClient : AppCompatActivity() {
                             val calendar = Calendar.getInstance()
                             val date = Date()
                             calendar.time = date
-                            if(order.dateToDeliver.day == day && it.idClient == uid){
+
                                 arrayOfOrders.add(it)
-                            }
+
 
                         }
                     }
