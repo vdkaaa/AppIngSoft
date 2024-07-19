@@ -72,10 +72,9 @@ class OrdersOfClient : AppCompatActivity() {
                             val calendar = Calendar.getInstance()
                             val date = Date()
                             calendar.time = date
-
+                            if(uid==order.idClient){
                                 arrayOfOrders.add(it)
-
-
+                            }
                         }
                     }
                     adapter.notifyDataSetChanged()

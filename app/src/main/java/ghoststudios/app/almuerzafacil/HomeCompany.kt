@@ -13,11 +13,18 @@ import androidx.navigation.findNavController
 import ghoststudios.app.almuerzafacil.ui.theme.PedidosEmpresa
 import java.util.Calendar
 import androidx.navigation.fragment.findNavController
+import ghoststudios.app.almuerzafacil.ui.theme.User
 
 class HomeCompany : AppCompatActivity() {
+    private lateinit var uidI: String
+    private lateinit var nameI: String
+    private lateinit var lastnameI: String
+    private lateinit var emailI: String
+    private var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
+
         setContentView(R.layout.activity_home_company)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -25,8 +32,22 @@ class HomeCompany : AppCompatActivity() {
             insets
         }
 
+        // Obtén los extras del intent de manera segura y proporciona valores predeterminados
+        emailI = intent.getStringExtra("email") ?: "email@example.com"
+        uidI = intent.getStringExtra("uid") ?: "default_uid"
+        nameI = intent.getStringExtra("name") ?: "Usuario"
+        lastnameI = intent.getStringExtra("lastname") ?: "Apellido"
+
+        // Inicializa el usuario
+        user = User(id = uidI, name = nameI, lastname = lastnameI, email = emailI, phone = null)
+
         findViewById<Button>(R.id.BtnCreateLunchHomeComany).setOnClickListener{
-            val intent = Intent(this, AddLunch::class.java)
+            val intent = Intent(this, AddLunch::class.java).apply {
+                putExtra("email", emailI)
+                putExtra("uid", uidI)
+                putExtra("name", nameI)
+            }
+
             startActivity(intent)
         }
         findViewById<Button>(R.id.BtnUploadLunchesHomeCompany).setOnClickListener{

@@ -26,7 +26,10 @@
     <string name="login_failed">"Login failed"</string>
     <string name="login">"Iniciar sesion"</string>
     <string name="sign_in">"Registrarse"</string>
-    <string name="sign_in_title">"Registro"</string>
+    <string name="sign_in_title">"Registra tu cuenta"</string>
+    <string name="name_client">"Nombre"</string>
+    <string name="lastname_client">"Apellido"</string>
+    <string name="phone">"Teléfono/Celular"</string>
     <string name="volver">"Volver"</string>
 
     //Config agendar
@@ -51,7 +54,7 @@
     <string name="verAlmuerzosAgendados">"Ver almuerzos agendados"</string>
 
     //HomeEmpresa
-    <string name="titleHomeCompany">"Home"</string>
+    <string name="titleHomeCompany">"Bienvenid@       Nombre empresa"</string>
     <string name="createALunch">"Crear un almuerzo"</string>
     <string name="seePendingOrders">"Ver almuerzos agendados"</string>
     <string name="uploadLunch">"Subir almuerzo"</string>

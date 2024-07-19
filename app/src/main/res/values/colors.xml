@@ -11,4 +11,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    //Paleta de colores
+    <color name="colorGreenPalette">#A2C740</color>
+    <color name="colorYellowPalette">#FFEB3B</color>
+    <color name="colorOrangePalette">#FF5722</color>
+    <color name="colorBrownPalette">#26221D</color>
 </resources>

@@ -100,7 +100,7 @@ class AddLunch : AppCompatActivity() {
 
                             Toast.makeText(this, "image stored", Toast.LENGTH_SHORT).show()
                             firebaseRef.child(lunchId).setValue(lunch).addOnCompleteListener {
-                                Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Almuerzo guardado exitosamente", Toast.LENGTH_SHORT).show()
 
                             }.addOnFailureListener {
                                 Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)

@@ -45,9 +45,9 @@ class HomePage : AppCompatActivity() {
         }
 
         // Obtener información del usuario desde el Intent
-        val email = intent.getStringExtra("email")
-        val uid = intent.getStringExtra("uid")
-        user = User(id = uid, email = email)
+        val emailIntent = intent.getStringExtra("email")
+        val nameIntent = intent.getStringExtra("name")
+        user = User(name = nameIntent, email = emailIntent)
 
         // Resto de la configuración
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
@@ -73,9 +73,9 @@ class HomePage : AppCompatActivity() {
 
         // Uso de la información del usuario
         user?.let {
-            Toast.makeText(this, "Bienvenido ${it.email}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Bienvenido ${it.name +" "+ it.lastname} ", Toast.LENGTH_SHORT).show()
             val txtUser = findViewById<TextView>(R.id.txtIDUser)
-            txtUser.text = "UID: ${it.id}"
+            txtUser.text = "${it.email}, que deseas pedir hoy?"
         }
     }
 

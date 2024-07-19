@@ -3,92 +3,111 @@ package ghoststudios.app.almuerzafacil
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ghoststudios.app.almuerzafacil.ui.theme.PedidosEmpresa
+import ghoststudios.app.almuerzafacil.ui.theme.User
 import java.util.Calendar
 
 class HomeClient : AppCompatActivity() {
-    private lateinit var email :String
-    private lateinit var uid : String
+    private lateinit var uidI: String
+    private lateinit var nameI: String
+    private lateinit var lastnameI: String
+    private lateinit var emailI: String
+    private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home_client)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        email = intent.getStringExtra("email")!!
-        uid = intent.getStringExtra("uid")!!
+        // Obtén los extras del intent de manera segura y proporciona valores predeterminados
+        emailI = intent.getStringExtra("email") ?: "email@example.com"
+        uidI = intent.getStringExtra("uid") ?: "default_uid"
+        nameI = intent.getStringExtra("name") ?: "Usuario"
+        lastnameI = intent.getStringExtra("lastname") ?: "Apellido"
 
-        findViewById<Button>(R.id.btn_orderLunch).setOnClickListener{
+        // Inicializa el usuario
+        user = User(id = uidI, name = nameI, lastname = lastnameI, email = emailI, phone = null)
+
+        // Agrega el log para verificar los datos del usuario
+        Log.d("HomeClient", "User Data - ID: ${user?.id}, Name: ${user?.name}, Lastname: ${user?.lastname}, Email: ${user?.email}, Phone: ${user?.phone}")
+
+        findViewById<Button>(R.id.btn_orderLunch).setOnClickListener {
             val intent = Intent(this, ChooseDayOfTheWeek::class.java)
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_DAY)
         }
-        findViewById<Button>(R.id.btn_seeOrderLunch).setOnClickListener{
-            val intent = Intent(this, OrdersOfClient::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("uid", uid)
+
+        val txtUser = findViewById<TextView>(R.id.tv_HomeClientTitle)
+        txtUser.text = "$nameI, ¿qué deseas pedir hoy?"
+
+        findViewById<Button>(R.id.btn_seeOrderLunch).setOnClickListener {
+            val intent = Intent(this, OrdersOfClient::class.java).apply {
+                putExtra("email", emailI)
+                putExtra("uid", uidI)
+                putExtra("name", nameI)
+            }
             startActivity(intent)
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode == Activity.RESULT_OK)
-        {
-            if (requestCode == REQUEST_CODE_CHOOSE_DAY) {
-                val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
-                if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
-                    val dayName = getDayName(selectedDayOfWeek)
-                    //Toast.makeText(this, "Selected Day: $dayName", Toast.LENGTH_SHORT).show()
-                    println("ClientSelectLunches day get $dayName , num $selectedDayOfWeek")
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_CHOOSE_DAY -> {
+                    val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
+                    if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
+                        val dayName = getDayName(selectedDayOfWeek)
+                        println("ClientSelectLunches day get $dayName, num $selectedDayOfWeek")
 
-                    val intent = Intent(this, ClientSelectLunches::class.java)
-                    intent.putExtra("dayOfWeek", selectedDayOfWeek)
-                    intent.putExtra("email", email)
-                    intent.putExtra("uid", uid)
-                    startActivity(intent)
+                        val intent = Intent(this, ClientSelectLunches::class.java).apply {
+                            putExtra("dayOfWeek", selectedDayOfWeek)
+                            putExtra("email", emailI)
+                            putExtra("uid", uidI)
+                            putExtra("name", nameI)
+                        }
+                        startActivity(intent)
+                    }
                 }
-            }
-            if (requestCode == REQUEST_CODE_CHOOSE_DAY_SEE_ORDER) {
-                val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
-                if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
-                    val dayName = getDayName(selectedDayOfWeek)
-                    println("OrdersOfClient day get $dayName , num $selectedDayOfWeek")
-                    //Toast.makeText(this, "Selected Day: $dayName", Toast.LENGTH_SHORT).show()
+                REQUEST_CODE_CHOOSE_DAY_SEE_ORDER -> {
+                    val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
+                    if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
+                        val dayName = getDayName(selectedDayOfWeek)
+                        println("OrdersOfClient day get $dayName, num $selectedDayOfWeek")
 
-                    val intent = Intent(this, OrdersOfClient::class.java)
-                    intent.putExtra("dayOfWeek", selectedDayOfWeek)
-                    intent.putExtra("email", email)
-                    intent.putExtra("uid", uid)
-                    startActivity(intent)
+                        val intent = Intent(this, OrdersOfClient::class.java).apply {
+                            putExtra("dayOfWeek", selectedDayOfWeek)
+                            putExtra("email", emailI)
+                            putExtra("uid", uidI)
+                            putExtra("name", nameI)
+                        }
+                        startActivity(intent)
+                    }
                 }
             }
         }
-
     }
 
     private fun getDayName(dayOfWeek: Int): String {
         return when (dayOfWeek) {
-            Calendar.MONDAY -> "Monday"
-            Calendar.TUESDAY -> "Tuesday"
-            Calendar.WEDNESDAY -> "Wednesday"
-            Calendar.THURSDAY -> "Thursday"
-            Calendar.FRIDAY -> "Friday"
-            Calendar.SATURDAY -> "Saturday"
-            Calendar.SUNDAY -> "Sunday"
-            else -> "Unknown"
+            Calendar.MONDAY -> "Lunes"
+            Calendar.TUESDAY -> "Martes"
+            Calendar.WEDNESDAY -> "Miércoles"
+            Calendar.THURSDAY -> "Jueves"
+            Calendar.FRIDAY -> "Viernes"
+            Calendar.SATURDAY -> "Sábado"
+            Calendar.SUNDAY -> "Domingo"
+            else -> "Desconocido"
         }
     }
 
