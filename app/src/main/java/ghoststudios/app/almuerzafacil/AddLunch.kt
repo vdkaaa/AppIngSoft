@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
+import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 
 class AddLunch : AppCompatActivity() {
 
@@ -36,6 +37,10 @@ class AddLunch : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        MyToolbar().show(this, getString(R.string.toolbarTitleAddLunch), true)
+
+
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
 
@@ -100,7 +105,7 @@ class AddLunch : AppCompatActivity() {
 
                             Toast.makeText(this, "image stored", Toast.LENGTH_SHORT).show()
                             firebaseRef.child(lunchId).setValue(lunch).addOnCompleteListener {
-                                Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Almuerzo guardado exitosamente", Toast.LENGTH_SHORT).show()
 
                             }.addOnFailureListener {
                                 Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)

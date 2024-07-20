@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.database.FirebaseDatabase
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
+import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 import ghoststudios.app.almuerzafacil.ui.theme.Order
 import java.util.Calendar
 import java.util.Date
@@ -35,6 +36,9 @@ class OrderALunchSettings : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        MyToolbar().show(this, getString(R.string.toolbarTitleOrderALunchSettings), true)
+
+
         val listOfLunches = intent.getParcelableArrayListExtra<Lunch>("lunches")
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!

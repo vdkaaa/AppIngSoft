@@ -5,13 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     tools:context=".ClientSelectLunches">
+    <include
+        layout="@layout/action_bar_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_OrderLunchesClient"
         android:layout_width="409dp"
         android:layout_height="593dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/AgendarAlmuerzoBtn"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

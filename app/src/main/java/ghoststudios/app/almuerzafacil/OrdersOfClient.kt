@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 import ghoststudios.app.almuerzafacil.ui.theme.Order
 import ghoststudios.app.almuerzafacil.ui.theme.PedidosAdapterClass
 import java.util.Calendar
@@ -37,6 +38,9 @@ class OrdersOfClient : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        MyToolbar().show(this, getString(R.string.toolbarTitleOrderOfClient), true)
+
+
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
 
@@ -72,10 +76,9 @@ class OrdersOfClient : AppCompatActivity() {
                             val calendar = Calendar.getInstance()
                             val date = Date()
                             calendar.time = date
-
+                            if(uid==order.idClient){
                                 arrayOfOrders.add(it)
-
-
+                            }
                         }
                     }
                     adapter.notifyDataSetChanged()

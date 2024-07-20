@@ -5,6 +5,7 @@
     android:id="@+id/main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Authentication.ui.RegisterActivity">
@@ -13,46 +14,96 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/sign_in_title"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"
-        android:textSize="30sp" />
+        android:textColor="#26221D"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:autofillHints=""
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/name_client"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#000000"
+        android:textColorHint="#463C32" />
+
+    <EditText
+        android:id="@+id/lastnameEditText"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/lastname_client"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#000000"
+        android:textColorHint="#463C32" />
 
     <EditText
         android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_correo"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A" />
+        android:textColor="#000000"
+        android:textColorHint="#463C32" />
 
     <EditText
         android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
-        android:textColorHint="#546E7A"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="#000000"
+        android:textColorHint="#463C32" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColorHint="#463C32" />
 
     <Button
         android:id="@+id/btn_register"
-        android:text="@string/sign_in"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:backgroundTint="@color/colorGreenPalette"
+        android:text="@string/sign_in" />
 
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/volver" />
 
 

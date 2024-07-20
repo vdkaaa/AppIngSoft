@@ -5,7 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     tools:context=".OrdersOfClient">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
 
     <TextView
         android:id="@+id/titleClientOrders"
@@ -14,7 +18,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/ClientsOrdersTitle"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +28,7 @@
         android:layout_width="409dp"
         android:layout_height="545dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"

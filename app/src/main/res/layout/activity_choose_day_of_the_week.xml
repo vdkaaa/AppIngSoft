@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     tools:context=".ChooseDayOfTheWeek">
 
 
@@ -14,79 +15,94 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/diasDisponibles"
-        android:textSize="20sp"
+        android:textColor="@color/colorBlackPalette"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_monday"
+        android:id="@+id/btn_chooseDay1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaLunes"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_titleChooseDay" />
 
     <Button
-        android:id="@+id/btn_tuesday"
+        android:id="@+id/btn_chooseDay2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaMartes"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_monday" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay1" />
 
     <Button
-        android:id="@+id/btn_wednesay"
+        android:id="@+id/btn_chooseDay3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaMiercoles"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_tuesday" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay2" />
 
     <Button
-        android:id="@+id/btn_thursday"
+        android:id="@+id/btn_chooseDay4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaJueves"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wednesay" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay3" />
 
     <Button
-        android:id="@+id/btn_friday"
+        android:id="@+id/btn_chooseDay5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaViernes"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_thursday" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay4" />
 
     <Button
-        android:id="@+id/btn_saturday"
+        android:id="@+id/btn_chooseDay6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaSabado"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_friday" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay5" />
 
     <Button
-        android:id="@+id/btn_sunday"
+        android:id="@+id/btn_chooseDay7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/diaDomingo"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_saturday" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chooseDay6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@
     android:id="@+id/main1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Authentication.ui.LoginActivity">
@@ -13,45 +14,55 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="@string/welcome"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"
-        android:textSize="30sp" />
+        android:textColor="@color/colorBlackPalette"
+        android:textSize="40sp" />
 
     <EditText
         android:id="@+id/emailEditTextLogin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_correo"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A" />
+        android:textColorHint="@color/colorBlackPalette" />
 
     <EditText
         android:id="@+id/passwordEditTextLogin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:background="#FD6868"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"/>
+        android:textColorHint="@color/colorBlackPalette" />
 
     <Button
         android:id="@+id/btn_login"
-        android:text="@string/login"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:backgroundTint="@color/colorGreenPalette"
+        android:shadowColor="#673AB7"
+        android:text="@string/login"
+
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btn_sign_in"
-        android:text="@string/sign_in"
+        android:layout_width="212dp"
+        android:layout_height="58dp"
         android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:backgroundTint="@color/colorGreenPalette"
+        android:text="@string/sign_in"
+        android:textSize="18sp" />
 </LinearLayout>

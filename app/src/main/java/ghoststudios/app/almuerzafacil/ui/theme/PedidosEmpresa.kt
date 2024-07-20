@@ -28,7 +28,7 @@ class PedidosEmpresa : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.supportActionBar?.hide()
+        //this.supportActionBar?.hide()
         enableEdgeToEdge()
         setContentView(R.layout.activity_pedidos_empresa)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -36,6 +36,8 @@ class PedidosEmpresa : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        MyToolbar().show(this, getString(R.string.toolbarTitleOrdersCompany), true)
+
 
         day = intent.getIntExtra("dayOfWeek", 1)
         Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
@@ -49,12 +51,6 @@ class PedidosEmpresa : AppCompatActivity() {
         val P_recyclerview = findViewById<RecyclerView>(R.id.recyclerViewPedidos)
         P_recyclerview.layoutManager = LinearLayoutManager(this)
         P_recyclerview.adapter = adapter
-
-        val backBtn = findViewById<Button>(R.id.pedidosBackBtn)
-        backBtn.setOnClickListener {
-            val intent = Intent(this, HomeCompany::class.java)
-            startActivity(intent)
-        }
 
         fetchOrders()
     }

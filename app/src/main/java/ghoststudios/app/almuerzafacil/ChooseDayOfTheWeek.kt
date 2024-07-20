@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Calendar
+import java.util.Date
 
 class ChooseDayOfTheWeek : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,28 +21,50 @@ class ChooseDayOfTheWeek : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val todayDate = Date()
 
-        findViewById<Button>(R.id.btn_monday).setOnClickListener {
-            setResultAndFinish(Calendar.MONDAY)
+        val btn1 = findViewById<Button>(R.id.btn_chooseDay1)
+        btn1.setOnClickListener {
+            //setResultAndFinish(Calendar.MONDAY)
+            setResultAndFinish((todayDate.day + 1) % 7+ 1)
         }
-        findViewById<Button>(R.id.btn_tuesday).setOnClickListener {
-            setResultAndFinish(Calendar.TUESDAY)
+        btn1.text = getDayName((todayDate.day + 1) % 7+ 1)
+        val btn2 = findViewById<Button>(R.id.btn_chooseDay2)
+        btn2.setOnClickListener {
+            //setResultAndFinish(Calendar.TUESDAY)
+            setResultAndFinish((todayDate.day + 2) % 7 + 1)
         }
-        findViewById<Button>(R.id.btn_wednesay).setOnClickListener {
-            setResultAndFinish(Calendar.WEDNESDAY)
+        btn2.text = getDayName((todayDate.day + 2) % 7+ 1)
+        val btn3 = findViewById<Button>(R.id.btn_chooseDay3)
+        btn3.setOnClickListener {
+            //setResultAndFinish(Calendar.WEDNESDAY)
+            setResultAndFinish((todayDate.day + 3) % 7+ 1)
         }
-        findViewById<Button>(R.id.btn_thursday).setOnClickListener {
-            setResultAndFinish(Calendar.THURSDAY)
+        btn3.text = getDayName((todayDate.day + 3) % 7+ 1)
+        val btn4 = findViewById<Button>(R.id.btn_chooseDay4)
+        btn4.setOnClickListener {
+            //setResultAndFinish(Calendar.THURSDAY)
+            setResultAndFinish((todayDate.day + 4) % 7+ 1)
         }
-        findViewById<Button>(R.id.btn_friday).setOnClickListener {
-            setResultAndFinish(Calendar.FRIDAY)
+        btn4.text = getDayName((todayDate.day + 4) % 7+ 1)
+        val btn5 = findViewById<Button>(R.id.btn_chooseDay5)
+        btn5.setOnClickListener {
+            //setResultAndFinish(Calendar.FRIDAY)
+            setResultAndFinish((todayDate.day + 5) % 7+ 1)
         }
-        findViewById<Button>(R.id.btn_saturday).setOnClickListener {
-            setResultAndFinish(Calendar.SATURDAY)
+        btn5.text = getDayName((todayDate.day + 5) % 7 + 1)
+        val btn6 = findViewById<Button>(R.id.btn_chooseDay6)
+        btn6.setOnClickListener {
+            //setResultAndFinish(Calendar.SATURDAY)
+            setResultAndFinish((todayDate.day + 6) % 7+ 1)
         }
-        findViewById<Button>(R.id.btn_sunday).setOnClickListener {
-            setResultAndFinish(Calendar.SUNDAY)
+        btn6.text = getDayName((todayDate.day + 6) % 7+ 1)
+        val btn7 = findViewById<Button>(R.id.btn_chooseDay7)
+        btn7.setOnClickListener {
+            //setResultAndFinish(Calendar.SUNDAY)
+            setResultAndFinish((todayDate.day + 7) % 7+ 1)
         }
+        btn7.text = getDayName((todayDate.day + 7) % 7+ 1)
     }
 
     private fun setResultAndFinish(dayOfWeek: Int) {
@@ -50,5 +73,17 @@ class ChooseDayOfTheWeek : AppCompatActivity() {
         resultIntent.putExtra("selected_day_of_week", dayOfWeek)
         setResult(Activity.RESULT_OK, resultIntent)
         finish()
+    }
+    private fun getDayName(dayOfWeek: Int): String {
+        return when (dayOfWeek) {
+            Calendar.MONDAY -> "Lunes"
+            Calendar.TUESDAY -> "Martes"
+            Calendar.WEDNESDAY -> "Miércoles"
+            Calendar.THURSDAY -> "Jueves"
+            Calendar.FRIDAY -> "Viernes"
+            Calendar.SATURDAY -> "Sábado"
+            Calendar.SUNDAY -> "Domingo"
+            else -> "Desconocido"
+        }
     }
 }

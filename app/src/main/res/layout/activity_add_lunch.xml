@@ -5,13 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     tools:context=".AddLunch">
-
+    <include
+        layout="@layout/action_bar_toolbar"/>
     <Button
         android:id="@+id/btnPickLunchImage"
         android:layout_width="178dp"
         android:layout_height="56dp"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="Seleccionar imagen "
         app:layout_constraintBottom_toTopOf="@+id/btnSaveLunch"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,9 +34,11 @@
         android:id="@+id/titleCreateLunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="90dp"
         android:text="@string/FormularioTituloCreandoAlmuerzo"
-        android:textSize="28sp"
+        android:textColor="@color/colorBlackPalette"
+        android:textSize="30sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +48,7 @@
         android:layout_width="168dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/BotonSubirAlmuerzo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,9 +59,8 @@
         android:layout_width="427dp"
         android:layout_height="77dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/dtDescriptionNoEditable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleCreateLunch">
@@ -95,6 +100,7 @@
         android:ems="10"
         android:hint="Precio"
         android:inputType="phone"
+        android:textColor="@color/colorBlackPalette"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dtDescriptionNoEditable" />
