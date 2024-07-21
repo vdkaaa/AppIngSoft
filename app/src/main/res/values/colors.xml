@@ -14,8 +14,15 @@
 
 
     //Paleta de colores
-    <color name="colorGreenPalette">#A2C740</color>
-    <color name="colorYellowPalette">#FFEB3B</color>
-    <color name="colorOrangePalette">#FF5722</color>
-    <color name="colorBrownPalette">#26221D</color>
+    <color name="colorWhitePalette">#F6F8F0</color>
+    <color name="colorGreenPalette">#5C7949</color>
+    <color name="colorBluePalette">#344E41</color>
+    <color name="colorYellowPalette">#FDB86E</color>
+    <color name="colorOrangePalette">#FDA769</color>
+    <color name="colorBrownPalette">#473C33</color>
+    <color name="colorBlackPalette">#27211C</color>
+
+    //Toolbar
+    <color name="toolbarColor">#344E41</color>
+
 </resources>

@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
+import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 
 class AddLunch : AppCompatActivity() {
 
@@ -36,6 +37,10 @@ class AddLunch : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        MyToolbar().show(this, getString(R.string.toolbarTitleAddLunch), true)
+
+
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
 

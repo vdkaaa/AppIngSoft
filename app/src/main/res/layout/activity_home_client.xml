@@ -5,29 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGreenPalette"
+    android:background="@color/colorWhitePalette"
     tools:context=".HomeClient">
 
     <Button
         android:id="@+id/btn_orderLunch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:backgroundTint="@color/colorOrangePalette"
+        android:layout_width="229dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/agendarAlmuerzo"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_HomeClientTitle" />
 
     <Button
         android:id="@+id/btn_seeOrderLunch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="302dp"
+        android:layout_height="65dp"
         android:layout_marginTop="70dp"
-        android:backgroundTint="@color/colorOrangePalette"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/verAlmuerzosAgendados"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_orderLunch" />
 
@@ -36,9 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:fontFamily="@font/demibold2"
-        android:text="Home"
-        android:textSize="34sp"
+        android:text="Bienvenid@ \nnombre"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

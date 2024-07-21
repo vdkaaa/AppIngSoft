@@ -5,104 +5,51 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorYellowPalette"
+    android:background="@color/colorWhitePalette"
     android:visibility="visible"
     tools:context=".HomeCompany"
     tools:visibility="visible">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnCreateLunchHomeComany"
+    <Button
+        android:id="@+id/BtnCreateLunchHomeComany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@color/colorGreenPalette"
+        android:text="@string/createALunch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleHomeCompany"
-        app:srcCompat="@drawable/createlunch" />
+        app:layout_constraintTop_toBottomOf="@+id/titleHomeCompany" />
 
     <Button
         android:id="@+id/BtnUploadLunchesHomeCompany"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="25dp"
-        android:backgroundTint="@color/colorBrownPalette"
-        android:fontFamily="@font/demibold2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/uploadLunch"
-        app:layout_constraintBottom_toTopOf="@+id/imgSeeLunches"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgUploadLunches" />
-
-    <ImageView
-        android:id="@+id/imgUploadLunches"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnUploadLunchesHomeCompany"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnCreateLunchHomeComany"
-        app:srcCompat="@drawable/uploadlunches" />
-
-    <Button
-        android:id="@+id/BtnCreateLunchHomeComany"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/colorBrownPalette"
-        android:fontFamily="@font/demibold2"
-        android:text="@string/createALunch"
-        app:layout_constraintBottom_toTopOf="@+id/imgUploadLunches"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imgSeeLunches"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="146dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnSeePendingOrdersHomeCompany"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnUploadLunchesHomeCompany"
-        app:srcCompat="@drawable/lunchesall" />
+        app:layout_constraintTop_toBottomOf="@+id/BtnCreateLunchHomeComany" />
 
     <Button
         android:id="@+id/BtnSeePendingOrdersHomeCompany"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="82dp"
-        android:backgroundTint="@color/colorBrownPalette"
-        android:fontFamily="@font/demibold2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/seePendingOrders"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSeeLunches" />
+        app:layout_constraintTop_toBottomOf="@+id/BtnUploadLunchesHomeCompany" />
 
     <TextView
         android:id="@+id/titleHomeCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="@color/colorOrangePalette"
-        android:fontFamily="@font/demibold2"
-        android:gravity="center"
         android:text="@string/titleHomeCompany"
-        android:textColor="@color/colorBrownPalette"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

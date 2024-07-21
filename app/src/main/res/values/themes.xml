@@ -10,4 +10,13 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Other theme attributes -->
     </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+
+        <item name="colorControlNormal">@color/toolbarColor</item>
+        <item name="titleTextColor">@color/colorBlackPalette</item>
+
+
+    </style>
+
 </resources>

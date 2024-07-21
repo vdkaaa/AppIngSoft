@@ -54,7 +54,7 @@
     <string name="verAlmuerzosAgendados">"Ver almuerzos agendados"</string>
 
     //HomeEmpresa
-    <string name="titleHomeCompany">"Bienvenid@       Nombre empresa"</string>
+    <string name="titleHomeCompany">"Bienvenid@ \nAdministrador"</string>
     <string name="createALunch">"Crear un almuerzo"</string>
     <string name="seePendingOrders">"Ver almuerzos agendados"</string>
     <string name="uploadLunch">"Subir almuerzo"</string>
@@ -65,5 +65,15 @@
 
     //Ordenes del cliente
     <string name="ClientsOrdersTitle">"Mis pedidos"</string>
+
+    //Toolbar empresa
+    <string name="toolbarTitleAddLunch">"Añadir almuerzos"</string>
+    <string name="toolbarTitleOrdersCompany">"Todos los pedidos"</string>
+    <string name="toolbarTitlePostLunches">"Publicar almuerzos"</string>
+
+    //Toolbar clientes
+    <string name="toolbarTitleClientSelectLunches">"Seleccionalos almuerzos"</string>
+    <string name="toolbarTitleOrderALunchSettings">"Configura tu almuerzo"</string>
+    <string name="toolbarTitleOrderOfClient">"Mis pedidos"</string>
 
 </resources>

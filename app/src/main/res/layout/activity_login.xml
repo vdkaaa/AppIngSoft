@@ -5,7 +5,7 @@
     android:id="@+id/main1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A2C740"
+    android:background="@color/colorWhitePalette"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Authentication.ui.LoginActivity">
@@ -15,10 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/demibold2"
         android:gravity="center"
         android:text="@string/welcome"
-        android:textColor="@color/colorBrownPalette"
+        android:textColor="@color/colorBlackPalette"
         android:textSize="40sp" />
 
     <EditText
@@ -29,11 +28,10 @@
         android:background="@color/white"
         android:ems="10"
         android:gravity="center"
-        android:fontFamily="@font/regular2"
         android:hint="@string/prompt_correo"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColorHint="#463C33" />
+        android:textColorHint="@color/colorBlackPalette" />
 
     <EditText
         android:id="@+id/passwordEditTextLogin"
@@ -43,30 +41,28 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:gravity="center"
-        android:fontFamily="@font/regular2"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColorHint="#463C33" />
+        android:textColorHint="@color/colorBlackPalette" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="280dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/colorOrangePalette"
-        android:fontFamily="@font/demibold2"
+        android:backgroundTint="@color/colorGreenPalette"
         android:shadowColor="#673AB7"
         android:text="@string/login"
 
-        />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btn_sign_in"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="212dp"
+        android:layout_height="58dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/colorBrownPalette"
-        android:fontFamily="@font/demibold2"
-        android:text="@string/sign_in" />
+        android:backgroundTint="@color/colorGreenPalette"
+        android:text="@string/sign_in"
+        android:textSize="18sp" />
 </LinearLayout>

@@ -17,15 +17,18 @@
         <activity
             android:name=".OrdersOfClient"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".HomeClient"/>
         <activity
             android:name=".AddLunch"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".HomeClient"/>
         <activity
             android:name=".PostLunches"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".HomeCompany"/>
         <activity
             android:name=".HomeCompany"
             android:exported="false"
@@ -33,7 +36,8 @@
         <activity
             android:name=".ClientSelectLunches"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".HomeClient"/>
         <activity
             android:name=".HomeClient"
             android:exported="false"
@@ -45,7 +49,8 @@
         <activity
             android:name=".OrderALunchSettings"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".ClientSelectLunches"/>
         <activity
             android:name=".Authentication.ui.RegisterActivity"
             android:exported="true"
@@ -71,7 +76,8 @@
         <activity
             android:name=".ui.theme.PedidosEmpresa"
             android:exported="true"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:parentActivityName=".HomeCompany"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

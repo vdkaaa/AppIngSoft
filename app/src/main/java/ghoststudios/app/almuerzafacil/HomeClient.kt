@@ -47,7 +47,7 @@ class HomeClient : AppCompatActivity() {
         }
 
         val txtUser = findViewById<TextView>(R.id.tv_HomeClientTitle)
-        txtUser.text = "$nameI, ¿qué deseas pedir hoy?"
+        txtUser.text = "Bienvenid@ $nameI,\n¿Qué deseas pedir hoy?"
 
         findViewById<Button>(R.id.btn_seeOrderLunch).setOnClickListener {
             val intent = Intent(this, OrdersOfClient::class.java).apply {

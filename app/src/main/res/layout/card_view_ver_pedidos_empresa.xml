@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    app:cardBackgroundColor="#227C9D"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
     app:cardElevation="6dp"
     app:contentPadding="12dp">
@@ -22,7 +22,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Nombre de la Persona"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Hora del Pedido"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PtextViewName" />
 
@@ -45,7 +45,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Almuerzo Pedido"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PtextViewTime" />
 
@@ -56,7 +56,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
             android:text="Cantidad"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PtextViewTime2" />
 
@@ -67,7 +67,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Para Llevar o Servir en Local"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PtextViewLunch" />
 
@@ -78,7 +78,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
             android:text="Hora Retiro"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorBlackPalette"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PtextViewName" />
 

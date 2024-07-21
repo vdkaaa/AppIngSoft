@@ -55,8 +55,8 @@ class HomeCompany : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_DAY_UPLOAD_LUNCH)
         }
         findViewById<Button>(R.id.BtnSeePendingOrdersHomeCompany).setOnClickListener{
-            val intent = Intent(this, ChooseDayOfTheWeek::class.java)
-            startActivityForResult(intent, REQUEST_CODE_CHOOSE_DAY_SEE_PENDING_ORDERS)
+            val intent = Intent(this, PedidosEmpresa::class.java)
+            startActivity(intent)
         }
 
     }

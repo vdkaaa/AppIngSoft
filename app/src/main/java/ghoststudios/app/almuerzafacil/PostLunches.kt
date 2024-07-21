@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.LunchAdapterClass
 import ghoststudios.app.almuerzafacil.ui.theme.LunchesPosted
+import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 import java.util.Calendar
 import java.util.Date
 
@@ -37,6 +38,9 @@ class PostLunches : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        MyToolbar().show(this, getString(R.string.toolbarTitlePostLunches), true)
+
+
         val day = intent.getIntExtra("dayOfWeek", 1)
         val dayNextWeek = getNextDayOfWeek(day)
 
