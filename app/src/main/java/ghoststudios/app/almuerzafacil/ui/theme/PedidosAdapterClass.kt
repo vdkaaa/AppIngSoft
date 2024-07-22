@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.firebase.database.FirebaseDatabase
 import ghoststudios.app.almuerzafacil.R
 
-class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val users: ArrayList<User>):
+class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val users: ArrayList<User>, private val lunches: ArrayList<Lunch>):
     Adapter<PedidosAdapterClass.PViewHolderClass>() {
 
     private val viewHolders = SparseArray<PViewHolderClass>()
@@ -39,7 +39,7 @@ class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val us
         holder.textViewName.text = getUserName(pedidos[i].idClient!!)
         holder.textViewTime.text = "Hora Pedido: ${pedidos[i].dateOrdered.hours} : ${pedidos[i].dateOrdered.minutes}"
         holder.textViewTime2.text = "Hora Retiro: ${pedidos[i].dateToDeliver.hours} : ${pedidos[i].dateToDeliver.minutes}"
-        holder.textViewLunch.text = pedidos[i].lunch
+        holder.textViewLunch.text = getLunchName(pedidos[i].lunch!!)
         holder.textViewQuantity.text = pedidos[i].amount.toString()
 
         if(pedidos[i].eatAtRestaurant){
@@ -48,13 +48,19 @@ class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val us
             holder.textViewForHereOrToGo.text = "Para LLevar"
         }
     }
-    fun fetchData(){
-        val firebaseRef = FirebaseDatabase.getInstance().getReference("users")
-    }
+
     fun getUserName(id : String):String{
         for(user in users){
             if(id==user.id){
                 return user.name!!
+            }
+        }
+        return ""
+    }
+    fun getLunchName(id : String):String{
+        for(lunch in lunches){
+            if(id==lunch.id){
+                return lunch.name!!
             }
         }
         return ""
