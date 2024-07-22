@@ -8,16 +8,17 @@
     android:background="@color/colorWhitePalette"
     tools:context=".OrderALunchSettings">
 
-    <include
-        layout="@layout/action_bar_toolbar"/>
+    <include layout="@layout/action_bar_toolbar" />
 
     <TextView
         android:id="@+id/cantidadText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/demibold2"
         android:text="@string/CantidadAlmuerzosAgendados"
+        android:textColor="@color/colorBlackPalette"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,20 +27,23 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/demibold2"
         android:text="@string/HoraDeRetiro"
+        android:textColor="@color/colorBlackPalette"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/horaARecibir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ServirOLlevar" />
 
     <EditText
         android:id="@+id/cantidadInputField"
         android:layout_width="78dp"
         android:layout_height="62dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="92dp"
+        android:background="@color/white"
         android:ems="10"
         android:hint="1"
         android:inputType="phone"
@@ -47,52 +51,63 @@
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cantidadText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/ServirOLlevar"
-        android:layout_width="110dp"
-        android:layout_height="132dp"
+        android:layout_width="153dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="40dp"
         android:checkedButton="@id/servirRadioButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cantidadText">
 
         <RadioButton
             android:id="@+id/servirRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:background="@color/white"
+            android:fontFamily="@font/demibold2"
             android:text="@string/OpcionComer1"
             android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/llevarRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:fontFamily="@font/demibold2"
+            android:minHeight="48dp"
             android:text="@string/OpcionComer2"
             android:textSize="20sp" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/horaARecibir"
-        android:layout_width="288dp"
-        android:layout_height="232dp"
+        android:layout_width="294dp"
+        android:layout_height="288dp"
         android:layout_marginStart="103dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="308dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="21dp"
+        android:background="@color/white"
         android:checkedButton="@id/rb_1300"
         app:layout_constraintBottom_toTopOf="@+id/AgendarAlmuerzoBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ServirOLlevar">
 
         <RadioButton
             android:id="@+id/rb_1130"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular2"
             android:text="11:30 am"
             android:textColor="@color/colorBlackPalette" />
 
@@ -100,6 +115,7 @@
             android:id="@+id/rb_1200"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular2"
             android:text="12:00 pm"
             android:textColor="@color/colorBlackPalette" />
 
@@ -114,6 +130,7 @@
             android:id="@+id/rb_1300"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular2"
             android:text="13:00 pm"
             android:textColor="@color/colorBlackPalette" />
 
@@ -121,13 +138,15 @@
             android:id="@+id/rb_1330"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular2"
             android:text="13:30 pm"
             android:textColor="@color/colorBlackPalette" />
 
         <RadioButton
             android:id="@+id/rb_1400"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
+            android:fontFamily="@font/regular2"
             android:text="14:00 pm"
             android:textColor="@color/colorBlackPalette" />
     </RadioGroup>
@@ -136,11 +155,12 @@
         android:id="@+id/AgendarAlmuerzoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="96dp"
         android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/AgendarAlmuerzoBtn"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

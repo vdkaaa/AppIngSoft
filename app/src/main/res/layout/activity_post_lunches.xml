@@ -10,6 +10,7 @@
     <include
         layout="@layout/action_bar_toolbar"/>
 
+
     <TextView
         android:id="@+id/titlePostLunchesAC"
         android:layout_width="wrap_content"
@@ -43,8 +44,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/postLunchesButton"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

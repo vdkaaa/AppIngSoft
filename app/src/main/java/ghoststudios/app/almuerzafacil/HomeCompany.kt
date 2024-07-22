@@ -70,7 +70,7 @@ class HomeCompany : AppCompatActivity() {
                     val dayName = getDayName(selectedDayOfWeek)
                     Toast.makeText(this, "Selected Day: $dayName", Toast.LENGTH_SHORT).show()
 
-                    val intent = Intent(this, PostLunches::class.java)
+                    val intent = Intent(this, SeeCompanyLunchesDayOfTheWeek::class.java)
                     intent.putExtra("dayOfWeek", selectedDayOfWeek)
                     startActivity(intent)
                 }

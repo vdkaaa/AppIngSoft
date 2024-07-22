@@ -17,6 +17,7 @@
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="@string/welcome"
+        android:fontFamily="@font/demibold2"
         android:textColor="@color/colorBlackPalette"
         android:textSize="40sp" />
 
@@ -29,6 +30,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_correo"
+        android:fontFamily="@font/regular2"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="@color/colorBlackPalette" />
@@ -41,6 +43,7 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:gravity="center"
+        android:fontFamily="@font/regular2"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -53,6 +56,7 @@
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/colorGreenPalette"
         android:shadowColor="#673AB7"
+        android:fontFamily="@font/demibold2"
         android:text="@string/login"
 
         android:textSize="18sp" />
@@ -62,6 +66,7 @@
         android:layout_width="212dp"
         android:layout_height="58dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/demibold2"
         android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/sign_in"
         android:textSize="18sp" />

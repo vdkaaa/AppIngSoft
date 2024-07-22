@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:gravity="center"
+        android:fontFamily="@font/demibold2"
         android:text="@string/sign_in_title"
         android:textColor="#26221D"
         android:textSize="40sp" />
@@ -29,6 +30,7 @@
         android:background="@color/white"
         android:ems="10"
         android:gravity="center"
+        android:fontFamily="@font/regular2"
         android:hint="@string/name_client"
         android:inputType="text"
         android:minHeight="48dp"
@@ -44,6 +46,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/lastname_client"
+        android:fontFamily="@font/regular2"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#000000"
@@ -58,6 +61,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_correo"
+        android:fontFamily="@font/regular2"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColor="#000000"
@@ -72,6 +76,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/prompt_password"
+        android:fontFamily="@font/regular2"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColor="#000000"
@@ -86,6 +91,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/phone"
+        android:fontFamily="@font/regular2"
         android:inputType="phone"
         android:minHeight="48dp"
         android:textColorHint="#463C32" />
@@ -96,6 +102,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/colorGreenPalette"
+        android:fontFamily="@font/demibold2"
         android:text="@string/sign_in" />
 
     <Button
@@ -103,6 +110,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/demibold2"
         android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/volver" />
 

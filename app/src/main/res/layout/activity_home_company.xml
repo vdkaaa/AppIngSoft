@@ -16,7 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:backgroundTint="@color/colorGreenPalette"
+        android:fontFamily="@font/demibold2"
         android:text="@string/createALunch"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleHomeCompany" />
@@ -27,7 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/colorGreenPalette"
+        android:fontFamily="@font/demibold2"
         android:text="@string/uploadLunch"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnCreateLunchHomeComany" />
@@ -38,7 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/colorGreenPalette"
+        android:fontFamily="@font/demibold2"
         android:text="@string/seePendingOrders"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnUploadLunchesHomeCompany" />
@@ -48,10 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/demibold2"
+        android:gravity="center"
         android:text="@string/titleHomeCompany"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

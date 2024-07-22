@@ -4,6 +4,6 @@ import java.util.Date
 
 class LunchesPosted(
     val id: String = "",
-    val lunchPosted: List<String> = emptyList(),
+    val lunchPosted: ArrayList<String> = ArrayList(),
     val datePosted: Date? = null
 )

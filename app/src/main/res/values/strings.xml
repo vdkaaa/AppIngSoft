@@ -33,11 +33,12 @@
     <string name="volver">"Volver"</string>
 
     //Config agendar
-    <string name="OpcionComer1">"Servir"</string>
-    <string name="OpcionComer2">"Llevar"</string>
-    <string name="HoraDeRetiro">"hora"</string>
+    <string name="OpcionComer1">"Para servir"</string>
+    <string name="OpcionComer2">"Para llevar "</string>
+    <string name="HoraDeRetiro">"Hora para retirar"</string>
     <string name="AgendarAlmuerzoBtn">"Agendar"</string>
     <string name="CantidadAlmuerzosAgendados">"Cantidad"</string>
+    <string name="AgregarAlmuerzos">"Agregar Almuerzo"</string>
 
     //dias de la semana
     <string name="diasDisponibles">"Días disponibles"</string>
@@ -61,7 +62,7 @@
 
     //Publicar almuerzos empresa
     <string name="postLunchesTitle">"Almuerzos disponibles"</string>
-    <string name="postLunchesButton">"Publicar"</string>
+    <string name="postLunchesButton">"Publicar almuerzos seleccionados"</string>
 
     //Ordenes del cliente
     <string name="ClientsOrdersTitle">"Mis pedidos"</string>
@@ -69,7 +70,8 @@
     //Toolbar empresa
     <string name="toolbarTitleAddLunch">"Añadir almuerzos"</string>
     <string name="toolbarTitleOrdersCompany">"Todos los pedidos"</string>
-    <string name="toolbarTitlePostLunches">"Publicar almuerzos"</string>
+    <string name="toolbarTitleLunchesDayCompany">"Almuerzos del día"</string>
+    <string name="toolbarTitlePostLunches">"Añadir nuevos almuerzos"</string>
 
     //Toolbar clientes
     <string name="toolbarTitleClientSelectLunches">"Seleccionalos almuerzos"</string>

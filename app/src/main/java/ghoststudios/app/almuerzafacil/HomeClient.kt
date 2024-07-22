@@ -1,6 +1,7 @@
 package ghoststudios.app.almuerzafacil
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -29,11 +30,23 @@ class HomeClient : AppCompatActivity() {
             insets
         }
 
+        // Obtén SharedPreferences
+        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+
         // Obtén los extras del intent de manera segura y proporciona valores predeterminados
-        emailI = intent.getStringExtra("email") ?: "email@example.com"
-        uidI = intent.getStringExtra("uid") ?: "default_uid"
-        nameI = intent.getStringExtra("name") ?: "Usuario"
-        lastnameI = intent.getStringExtra("lastname") ?: "Apellido"
+        emailI = intent.getStringExtra("email") ?: sharedPreferences.getString("email", "email@example.com")!!
+        uidI = intent.getStringExtra("uid") ?: sharedPreferences.getString("uid", "default_uid")!!
+        nameI = intent.getStringExtra("name") ?: sharedPreferences.getString("name", "Usuario")!!
+        lastnameI = intent.getStringExtra("lastname") ?: sharedPreferences.getString("lastname", "Apellido")!!
+
+        // Guarda los datos obtenidos en SharedPreferences
+        sharedPreferences.edit().apply {
+            putString("email", emailI)
+            putString("uid", uidI)
+            putString("name", nameI)
+            putString("lastname", lastnameI)
+            apply()
+        }
 
         // Inicializa el usuario
         user = User(id = uidI, name = nameI, lastname = lastnameI, email = emailI, phone = null)

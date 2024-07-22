@@ -15,42 +15,47 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".SeeCompanyLunchesDayOfTheWeek"
+            android:exported="false"
+            android:parentActivityName=".HomeCompany"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+        <activity
             android:name=".OrdersOfClient"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".HomeClient"/>
+            android:parentActivityName=".HomeClient"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".AddLunch"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".HomeClient"/>
+            android:parentActivityName=".HomeClient"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".PostLunches"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".HomeCompany"/>
+            android:parentActivityName=".SeeCompanyLunchesDayOfTheWeek"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".HomeCompany"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ClientSelectLunches"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".HomeClient"/>
+            android:parentActivityName=".HomeClient"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".HomeClient"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".ChooseDayOfTheWeek"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".OrderALunchSettings"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".ClientSelectLunches"/>
+            android:parentActivityName=".ClientSelectLunches"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".Authentication.ui.RegisterActivity"
             android:exported="true"
@@ -76,8 +81,8 @@
         <activity
             android:name=".ui.theme.PedidosEmpresa"
             android:exported="true"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:parentActivityName=".HomeCompany"/>
+            android:parentActivityName=".HomeCompany"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -5,30 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhitePalette"
     tools:context=".AddLunch">
-    <include
-        layout="@layout/action_bar_toolbar"/>
+
+    <include layout="@layout/action_bar_toolbar" />
+
     <Button
         android:id="@+id/btnPickLunchImage"
         android:layout_width="178dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="136dp"
         android:backgroundTint="@color/colorGreenPalette"
         android:text="Seleccionar imagen "
         app:layout_constraintBottom_toTopOf="@+id/btnSaveLunch"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toEndOf="@+id/previewImageLunch" />
 
     <ImageView
         android:id="@+id/previewImageLunch"
-        android:layout_width="195dp"
-        android:layout_height="164dp"
+        android:layout_width="184dp"
+        android:layout_height="149dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/uploadimg" />
 
     <TextView
         android:id="@+id/titleCreateLunch"
@@ -47,60 +48,70 @@
         android:id="@+id/btnSaveLunch"
         android:layout_width="168dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="180dp"
         android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/BotonSubirAlmuerzo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/previewImageLunch" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtNameNoEditable"
-        android:layout_width="427dp"
-        android:layout_height="77dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textColorHint="@color/colorBlackPalette"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleCreateLunch">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtLunchName"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:gravity="center"
             android:hint="@string/NombreAlmuerzo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dtDescriptionNoEditable"
-        android:layout_width="419dp"
-        android:layout_height="76dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="1dp"
+        android:textColorHint="@color/colorBlackPalette"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNameNoEditable">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtDescriptionLunch"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
             android:gravity="center"
             android:hint="@string/DescripcionAlmuerzo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/edtPriceLunch"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@color/white"
         android:ems="10"
+        android:gravity="center"
         android:hint="Precio"
         android:inputType="phone"
-        android:textColor="@color/colorBlackPalette"
+        android:minHeight="48dp"
+        android:textColorHint="@color/colorBlackPalette"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dtDescriptionNoEditable" />

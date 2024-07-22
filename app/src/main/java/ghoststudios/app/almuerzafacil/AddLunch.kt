@@ -46,7 +46,7 @@ class AddLunch : AppCompatActivity() {
 
         firebaseRef = FirebaseDatabase.getInstance().getReference("lunches")
         storageRef = FirebaseStorage.getInstance().getReference("Images")
-        findViewById<ImageView>(R.id.previewImageLunch).setImageResource(R.drawable.tutorial)
+        findViewById<ImageView>(R.id.previewImageLunch).setImageResource(R.drawable.uploadimg)
 
         val pickedImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             findViewById<ImageView>(R.id.previewImageLunch).setImageURI(it)
