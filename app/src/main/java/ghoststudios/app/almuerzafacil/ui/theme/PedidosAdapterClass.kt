@@ -1,25 +1,20 @@
 package ghoststudios.app.almuerzafacil.ui.theme
 
-import android.content.Context
+
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.firebase.database.FirebaseDatabase
-import com.squareup.picasso.Picasso
 import ghoststudios.app.almuerzafacil.R
-import java.util.Date
 
-class PedidosAdapterClass (private val pedidos: ArrayList<Order>):
+class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val users: ArrayList<User>):
     Adapter<PedidosAdapterClass.PViewHolderClass>() {
 
     private val viewHolders = SparseArray<PViewHolderClass>()
-    private var isEnable= false
 
     class PViewHolderClass(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textViewName: TextView = itemView.findViewById(R.id.PtextViewName)
@@ -40,16 +35,28 @@ class PedidosAdapterClass (private val pedidos: ArrayList<Order>):
 
     override fun onBindViewHolder(holder: PViewHolderClass, i: Int) {
         viewHolders.put(i, holder)
-        holder.textViewName.text = pedidos[i].idClient
-        holder.textViewTime.text = pedidos[i].dateOrdered.toString()
-        holder.textViewTime2.text = pedidos[i].dateToDeliver.toString()
-        holder.textViewLunch.text = pedidos[i].id
-        holder.textViewQuantity.text = pedidos[i].total.toString()
-       //holder.textViewForHereOrToGo.text = pedidos[i].wasDelivered.toString()
-        if(pedidos[i].wasDelivered){
-            holder.textViewForHereOrToGo.text = "Para LLevar"
-        }else{
+
+        holder.textViewName.text = getUserName(pedidos[i].idClient!!)
+        holder.textViewTime.text = "Hora Pedido: ${pedidos[i].dateOrdered.hours} : ${pedidos[i].dateOrdered.minutes}"
+        holder.textViewTime2.text = "Hora Retiro: ${pedidos[i].dateToDeliver.hours} : ${pedidos[i].dateToDeliver.minutes}"
+        holder.textViewLunch.text = pedidos[i].lunch
+        holder.textViewQuantity.text = pedidos[i].amount.toString()
+
+        if(pedidos[i].eatAtRestaurant){
             holder.textViewForHereOrToGo.text = "Para Servir"
+        }else{
+            holder.textViewForHereOrToGo.text = "Para LLevar"
         }
+    }
+    fun fetchData(){
+        val firebaseRef = FirebaseDatabase.getInstance().getReference("users")
+    }
+    fun getUserName(id : String):String{
+        for(user in users){
+            if(id==user.id){
+                return user.name!!
+            }
+        }
+        return ""
     }
 }

@@ -17,15 +17,18 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import ghoststudios.app.almuerzafacil.ui.theme.MyToolbar
 import ghoststudios.app.almuerzafacil.ui.theme.Order
-import ghoststudios.app.almuerzafacil.ui.theme.PedidosAdapterClass
+import ghoststudios.app.almuerzafacil.ui.theme.AgendadosClienteAdapterClass
+import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import java.util.Calendar
 import java.util.Date
 
 class OrdersOfClient : AppCompatActivity() {
 
     private lateinit var ordersRef: DatabaseReference
+    private lateinit var lunchesRef: DatabaseReference
     private lateinit var arrayOfOrders: ArrayList<Order>
-    private lateinit var adapter: PedidosAdapterClass
+    private lateinit var arrayOfLunches: ArrayList<Lunch>
+    private lateinit var adapter: AgendadosClienteAdapterClass
     private lateinit var email :String
     private lateinit var uid : String
 
@@ -48,20 +51,19 @@ class OrdersOfClient : AppCompatActivity() {
         //Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
 
         ordersRef = FirebaseDatabase.getInstance().getReference("orders")
+        lunchesRef = FirebaseDatabase.getInstance().getReference("lunches")
 
         arrayOfOrders = arrayListOf()
+        arrayOfLunches = arrayListOf()
 
-        adapter = PedidosAdapterClass(arrayOfOrders)
+
+        adapter = AgendadosClienteAdapterClass(arrayOfOrders, arrayOfLunches)
 
         val P_recyclerview = findViewById<RecyclerView>(R.id.rv_ClientOrders)
         P_recyclerview.layoutManager = LinearLayoutManager(this)
         P_recyclerview.adapter = adapter
 
-
-
         fetchOrders()
-
-
 
     }
 
@@ -82,7 +84,31 @@ class OrdersOfClient : AppCompatActivity() {
                         }
                     }
                     adapter.notifyDataSetChanged()
+                    fetchLunches()
                 }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(baseContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+    private fun fetchLunches() {
+        lunchesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                arrayOfLunches.clear()
+                if (snapshot.exists()) {
+                    for (lunchSnap in snapshot.children) {
+                        val lunch = lunchSnap.getValue(Lunch::class.java)
+                        lunch?.let {
+                            arrayOfLunches.add(it)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+                adapter = AgendadosClienteAdapterClass(arrayOfOrders, arrayOfLunches)
+                val P_recyclerview = findViewById<RecyclerView>(R.id.rv_ClientOrders)
+                P_recyclerview.adapter = adapter
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -22,9 +22,14 @@ import java.util.Date
 
 class PedidosEmpresa : AppCompatActivity() {
     private lateinit var ordersRef: DatabaseReference
+    private lateinit var usersRef: DatabaseReference
     private lateinit var arrayOfOrders: ArrayList<Order>
+    private lateinit var arrayOfUsers: ArrayList<User>
     private lateinit var adapter: PedidosAdapterClass
     private var day = 1
+    private lateinit var email :String
+    private lateinit var uid : String
+    private lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +43,21 @@ class PedidosEmpresa : AppCompatActivity() {
         }
         MyToolbar().show(this, getString(R.string.toolbarTitleOrdersCompany), true)
 
+        email = intent.getStringExtra("email")!!
+        uid = intent.getStringExtra("uid")!!
+        name= intent.getStringExtra("name")!!
+
 
         day = intent.getIntExtra("dayOfWeek", 1)
         Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
 
         ordersRef = FirebaseDatabase.getInstance().getReference("orders")
+        usersRef = FirebaseDatabase.getInstance().getReference("users")
 
         arrayOfOrders = arrayListOf()
+        arrayOfUsers = arrayListOf()
 
-        adapter = PedidosAdapterClass(arrayOfOrders)
+        adapter = PedidosAdapterClass(arrayOfOrders, arrayOfUsers)
 
         val P_recyclerview = findViewById<RecyclerView>(R.id.recyclerViewPedidos)
         P_recyclerview.layoutManager = LinearLayoutManager(this)
@@ -68,6 +79,30 @@ class PedidosEmpresa : AppCompatActivity() {
                     }
                     adapter.notifyDataSetChanged()
                 }
+                fetchUser()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(baseContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+    private fun fetchUser() {
+        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                arrayOfUsers.clear()
+                if (snapshot.exists()) {
+                    for (userSnap in snapshot.children) {
+                        val user = userSnap.getValue(User::class.java)
+                        user?.let {
+                            arrayOfUsers.add(it)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+                adapter = PedidosAdapterClass(arrayOfOrders, arrayOfUsers)
+                val P_recyclerview = findViewById<RecyclerView>(R.id.recyclerViewPedidos)
+                P_recyclerview.adapter = adapter
             }
 
             override fun onCancelled(error: DatabaseError) {
