@@ -43,9 +43,6 @@ class PedidosEmpresa : AppCompatActivity() {
         }
         MyToolbar().show(this, getString(R.string.toolbarTitleOrdersCompany), true)
 
-        email = intent.getStringExtra("email")!!
-        uid = intent.getStringExtra("uid")!!
-        name= intent.getStringExtra("name")!!
 
 
         day = intent.getIntExtra("dayOfWeek", 1)

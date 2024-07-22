@@ -42,13 +42,9 @@ class OrderALunchSettings : AppCompatActivity() {
         val listOfLunches = intent.getParcelableArrayListExtra<Lunch>("lunches")
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
-        val day = intent.getIntExtra("dayOfWeek", 1)!!
+        val day = intent.getIntExtra("dayOfWeek", 1)
 
-        val aa = getNextDayOfWeek(day)
-        println("OrderALunchSettings day num $day , getDayOfWeek $aa")
-        Toast.makeText(this, "OrderALunchSettings day num $day , getDayOfWeek $aa", Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(this, "size ${listOfLunches?.size}", Toast.LENGTH_SHORT).show()
         eatType = findViewById(R.id.ServirOLlevar)
         hourEat = findViewById(R.id.horaARecibir)
 
@@ -101,7 +97,7 @@ class OrderALunchSettings : AppCompatActivity() {
             val orderId = firebaseRef.push().key!!
             val currentDate = Date()
 
-            var dateToReceive = getNextDayOfWeek(Calendar.getInstance().get(day))
+            var dateToReceive = getNextDayOfWeek(day)
             dateToReceive.hours = hourTakeFood
             dateToReceive.minutes = minuteTakeFood
             val order = Order(
@@ -142,7 +138,7 @@ class OrderALunchSettings : AppCompatActivity() {
             calendar.add(Calendar.DAY_OF_YEAR, daysUntilNextDay)
         }
 
-        calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek +1)
         return calendar.time
     }
 }

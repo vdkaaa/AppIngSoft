@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.firebase.database.FirebaseDatabase
 import ghoststudios.app.almuerzafacil.R
+import java.util.Calendar
 
 class AgendadosClienteAdapterClass (private val ordenes: ArrayList<Order>, private val lunches: ArrayList<Lunch>):
     Adapter<AgendadosClienteAdapterClass.AgViewHolderClass>() {
@@ -36,8 +37,8 @@ class AgendadosClienteAdapterClass (private val ordenes: ArrayList<Order>, priva
     override fun onBindViewHolder(holder: AgViewHolderClass, i: Int) {
         viewHolders.put(i, holder)
 
-        holder.textViewNameDay.text = "${ordenes[i].dateOrdered.day}"
-        holder.textViewTime.text = "Hora Pedido: ${ordenes[i].dateOrdered.hours} : ${ordenes[i].dateOrdered.minutes}"
+        holder.textViewNameDay.text = getDayName(ordenes[i].dateToDeliver.day)
+        holder.textViewTime.text = "Hora Retiro: ${ordenes[i].dateToDeliver.hours} : ${ordenes[i].dateToDeliver.minutes}"
         holder.textViewLunch.text = getLunchesName(ordenes[i].lunch!!)
         holder.textViewQuantity.text = ordenes[i].amount.toString()
 
@@ -56,5 +57,16 @@ class AgendadosClienteAdapterClass (private val ordenes: ArrayList<Order>, priva
         }
         return ""
     }
-
+    private fun getDayName(dayOfWeek: Int): String {
+        return when (dayOfWeek) {
+            Calendar.MONDAY -> "Lunes"
+            Calendar.TUESDAY -> "Martes"
+            Calendar.WEDNESDAY -> "Miércoles"
+            Calendar.THURSDAY -> "Jueves"
+            Calendar.FRIDAY -> "Viernes"
+            Calendar.SATURDAY -> "Sábado"
+            Calendar.SUNDAY -> "Domingo"
+            else -> "Desconocido"
+        }
+    }
 }
