@@ -4,15 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
 import ghoststudios.app.almuerzafacil.ui.theme.PedidosEmpresa
 import java.util.Calendar
-import androidx.navigation.fragment.findNavController
 import ghoststudios.app.almuerzafacil.ui.theme.User
 
 class HomeCompany : AppCompatActivity() {
@@ -67,9 +63,6 @@ class HomeCompany : AppCompatActivity() {
             if(requestCode == REQUEST_CODE_CHOOSE_DAY_UPLOAD_LUNCH){
                 val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
                 if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
-                    val dayName = getDayName(selectedDayOfWeek)
-                    Toast.makeText(this, "Selected Day: $dayName", Toast.LENGTH_SHORT).show()
-
                     val intent = Intent(this, SeeCompanyLunchesDayOfTheWeek::class.java)
                     intent.putExtra("dayOfWeek", selectedDayOfWeek)
                     startActivity(intent)
@@ -79,9 +72,6 @@ class HomeCompany : AppCompatActivity() {
             if(requestCode == REQUEST_CODE_CHOOSE_DAY_SEE_PENDING_ORDERS){
                 val selectedDayOfWeek = data?.getIntExtra("selected_day_of_week", -1)
                 if (selectedDayOfWeek != null && selectedDayOfWeek != -1) {
-                    val dayName = getDayName(selectedDayOfWeek)
-                    Toast.makeText(this, "Selected Day: $dayName", Toast.LENGTH_SHORT).show()
-
                     val intent = Intent(this, PedidosEmpresa::class.java)
                     intent.putExtra("dayOfWeek", selectedDayOfWeek)
                     startActivity(intent)

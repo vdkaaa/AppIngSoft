@@ -1,8 +1,6 @@
 package ghoststudios.app.almuerzafacil.ui.theme
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import ghoststudios.app.almuerzafacil.HomeCompany
 import ghoststudios.app.almuerzafacil.R
-import java.util.Calendar
-import java.util.Date
 
 class PedidosEmpresa : AppCompatActivity() {
     private lateinit var ordersRef: DatabaseReference
@@ -47,11 +42,10 @@ class PedidosEmpresa : AppCompatActivity() {
 
 
         day = intent.getIntExtra("dayOfWeek", 1)
-        Toast.makeText(this, "dia {$day}", Toast.LENGTH_SHORT).show()
 
         ordersRef = FirebaseDatabase.getInstance().getReference("orders")
         usersRef = FirebaseDatabase.getInstance().getReference("users")
-        lunchRef = FirebaseDatabase.getInstance().getReference("lunch")
+        lunchRef = FirebaseDatabase.getInstance().getReference("lunches")
 
         arrayOfOrders = arrayListOf()
         arrayOfUsers = arrayListOf()
@@ -80,7 +74,6 @@ class PedidosEmpresa : AppCompatActivity() {
                     adapter.notifyDataSetChanged()
                 }
                 fetchUser()
-                fetchLunch()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -101,9 +94,7 @@ class PedidosEmpresa : AppCompatActivity() {
                     }
                     adapter.notifyDataSetChanged()
                 }
-                adapter = PedidosAdapterClass(arrayOfOrders, arrayOfUsers, arrayOfLunch)
-                val P_recyclerview = findViewById<RecyclerView>(R.id.recyclerViewPedidos)
-                P_recyclerview.adapter = adapter
+                fetchLunch()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -113,7 +104,7 @@ class PedidosEmpresa : AppCompatActivity() {
     }
 
     private fun fetchLunch() {
-        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        lunchRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 arrayOfLunch.clear()
                 if (snapshot.exists()) {

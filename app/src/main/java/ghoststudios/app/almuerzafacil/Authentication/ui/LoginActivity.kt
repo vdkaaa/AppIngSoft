@@ -1,8 +1,8 @@
 package ghoststudios.app.almuerzafacil.Authentication.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +14,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import ghoststudios.app.almuerzafacil.HomeClient
 import ghoststudios.app.almuerzafacil.HomeCompany
-import ghoststudios.app.almuerzafacil.HomePage
-import ghoststudios.app.almuerzafacil.ListCompanyLunches
 import ghoststudios.app.almuerzafacil.ProviderType
 import ghoststudios.app.almuerzafacil.databinding.ActivityLoginBinding
-import ghoststudios.app.almuerzafacil.ui.theme.Lunch
 import ghoststudios.app.almuerzafacil.ui.theme.User
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setup() {
+
         binding.btnLogin.setOnClickListener {
             if (binding.emailEditTextLogin.text.isNotEmpty() && binding.passwordEditTextLogin.text.isNotEmpty()) {
                 FirebaseAuth.getInstance()
@@ -52,8 +51,10 @@ class LoginActivity : AppCompatActivity() {
 
                             if(binding.emailEditTextLogin.text.toString() == "samquiroz385@gmail.com"){
                                 fetchData(loggedInUser, HomeCompany::class.java)
+                                finish()
                             }else{
                                 fetchData(loggedInUser,HomeClient::class.java)
+                                finish()
                             }
 
 

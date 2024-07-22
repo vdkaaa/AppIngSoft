@@ -51,8 +51,6 @@ class HomeClient : AppCompatActivity() {
         // Inicializa el usuario
         user = User(id = uidI, name = nameI, lastname = lastnameI, email = emailI, phone = null)
 
-        // Agrega el log para verificar los datos del usuario
-        Log.d("HomeClient", "User Data - ID: ${user?.id}, Name: ${user?.name}, Lastname: ${user?.lastname}, Email: ${user?.email}, Phone: ${user?.phone}")
 
         findViewById<Button>(R.id.btn_orderLunch).setOnClickListener {
             val intent = Intent(this, ChooseDayOfTheWeek::class.java)

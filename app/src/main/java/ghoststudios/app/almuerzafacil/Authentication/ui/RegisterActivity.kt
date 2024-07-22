@@ -67,6 +67,7 @@ class RegisterActivity : AppCompatActivity() {
 
         firebaseRef.child(user.id!!).setValue(user).addOnCompleteListener {
             Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
+            showHomeClient(user)
 
         }.addOnFailureListener {
             Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)

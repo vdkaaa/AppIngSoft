@@ -66,8 +66,6 @@ class ClientSelectLunches : AppCompatActivity() {
             intent.putExtra("email", email)
             intent.putExtra("uid", uid)
             intent.putExtra("dayOfWeek", day)
-            val num = adapter.getListOfLunches().size
-            Toast.makeText(this,"tam $num",Toast.LENGTH_SHORT).show()
             intent.putParcelableArrayListExtra("lunches", adapter.getListOfLunches())
             startActivity(intent)
         }
@@ -109,7 +107,6 @@ class ClientSelectLunches : AppCompatActivity() {
                         }
                     }
                 }
-                //Toast.makeText(baseContext, "Loading lunches: ${arrayOfLunches.size}", Toast.LENGTH_SHORT).show()
                 val recyclerview = findViewById<RecyclerView>(R.id.rv_OrderLunchesClient)
                 adapter = LunchAdapterClass(arrayOfLunchesToShow){show ->ShowSelectedIcons(show)}
                 recyclerview.adapter = adapter

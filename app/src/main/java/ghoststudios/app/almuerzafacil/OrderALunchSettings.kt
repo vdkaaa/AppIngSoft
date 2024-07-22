@@ -45,9 +45,9 @@ class OrderALunchSettings : AppCompatActivity() {
         val day = intent.getIntExtra("dayOfWeek", 1)
 
 
+
         eatType = findViewById(R.id.ServirOLlevar)
         hourEat = findViewById(R.id.horaARecibir)
-
         eatType.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.servirRadioButton -> {
@@ -90,38 +90,47 @@ class OrderALunchSettings : AppCompatActivity() {
 
         val amount = findViewById<EditText>(R.id.cantidadInputField)
 
-        findViewById<Button>(R.id.AgendarAlmuerzoBtn).setOnClickListener {
+        val agendarBtn = findViewById<Button>(R.id.AgendarAlmuerzoBtn)
 
-            val clientID = uid
-            val firebaseRef = FirebaseDatabase.getInstance().getReference("orders")
-            val orderId = firebaseRef.push().key!!
-            val currentDate = Date()
+        agendarBtn.setOnClickListener {
+            agendarBtn.isEnabled = false  // Desactivar el botón
+            val amountText = amount.text.toString()
+            if (amountText.isNotEmpty() && amountText.toIntOrNull() != null && amountText.toInt() > 0) {
+                val clientID = uid
+                val firebaseRef = FirebaseDatabase.getInstance().getReference("orders")
+                val orderId = firebaseRef.push().key!!
+                val currentDate = Date()
 
-            var dateToReceive = getNextDayOfWeek(day)
-            dateToReceive.hours = hourTakeFood
-            dateToReceive.minutes = minuteTakeFood
-            val order = Order(
-                id = orderId,
-                idClient = clientID,
-                lunch = listOfLunches!![0].id,
-                dateOrdered = currentDate,
-                dateToDeliver = dateToReceive,
-                total = 0,
-                wasDelivered = false,
-                eatAtRestaurant = eatAtRestaurantOptions,
-                amount = amount.text.toString().toInt()
-            )
-            println(order.dateOrdered)
+                val dateToReceive = getNextDayOfWeek(day)
+                dateToReceive.hours = hourTakeFood
+                dateToReceive.minutes = minuteTakeFood
+                val order = Order(
+                    id = orderId,
+                    idClient = clientID,
+                    lunch = listOfLunches!![0].id,
+                    dateOrdered = currentDate,
+                    dateToDeliver = dateToReceive,
+                    total = 0,
+                    wasDelivered = false,
+                    eatAtRestaurant = eatAtRestaurantOptions,
+                    amount = amountText.toInt()
+                )
+                println(order.dateOrdered)
 
-            firebaseRef.child(orderId).setValue(order).addOnCompleteListener {
-                Toast.makeText(this, "data stored", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeClient::class.java)
-                intent.putExtra("email", email)
-                intent.putExtra("uid", uid)
-                startActivity(intent)
-            }.addOnFailureListener {
-                Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)
-                    .show()
+                firebaseRef.child(orderId).setValue(order).addOnCompleteListener {
+                    Toast.makeText(this, "Almuerzo Agendado Correctamente", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HomeClient::class.java)
+                    intent.putExtra("email", email)
+                    intent.putExtra("uid", uid)
+                    startActivity(intent)
+                    agendarBtn.isEnabled = true  // Activar el botón de nuevo
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show()
+                    agendarBtn.isEnabled = true  // Activar el botón de nuevo incluso en caso de fallo
+                }
+            } else {
+                amount.error = "Verifica la cantidad de tu pedido"
+                agendarBtn.isEnabled = true  // Activar el botón de nuevo si la cantidad no es válida
             }
         }
     }

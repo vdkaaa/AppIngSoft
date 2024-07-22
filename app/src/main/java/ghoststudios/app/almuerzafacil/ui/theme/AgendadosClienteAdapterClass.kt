@@ -40,7 +40,7 @@ class AgendadosClienteAdapterClass (private val ordenes: ArrayList<Order>, priva
         holder.textViewNameDay.text = getDayName(ordenes[i].dateToDeliver.day)
         holder.textViewTime.text = "Hora Retiro: ${ordenes[i].dateToDeliver.hours} : ${ordenes[i].dateToDeliver.minutes}"
         holder.textViewLunch.text = getLunchesName(ordenes[i].lunch!!)
-        holder.textViewQuantity.text = ordenes[i].amount.toString()
+        holder.textViewQuantity.text = "Cantidad: " +ordenes[i].amount.toString()
 
         if(ordenes[i].eatAtRestaurant){
             holder.textViewForHereOrToGo.text = "Para Servir"

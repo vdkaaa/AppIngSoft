@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isGone
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -27,7 +28,7 @@ class AddLunch : AppCompatActivity() {
     private lateinit var firebaseRef: DatabaseReference
     private lateinit var email :String
     private lateinit var uid : String
-
+    private lateinit var  savebtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,7 +41,7 @@ class AddLunch : AppCompatActivity() {
 
         MyToolbar().show(this, getString(R.string.toolbarTitleAddLunch), true)
 
-
+        savebtn = findViewById(R.id.btnSaveLunch)
         email = intent.getStringExtra("email")!!
         uid = intent.getStringExtra("uid")!!
 
@@ -59,6 +60,7 @@ class AddLunch : AppCompatActivity() {
             pickedImage.launch("image/*")
         }
         findViewById<Button>(R.id.btnSaveLunch).setOnClickListener {
+            savebtn.isEnabled = false
             saveData()
         }
     }
@@ -103,14 +105,16 @@ class AddLunch : AppCompatActivity() {
                             val imgUrl = url.toString()
                             val lunch = Lunch(lunchId, lunchName, lunchDescription, lunchPrice, imgUrl)
 
-                            Toast.makeText(this, "image stored", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Subiendo Almuerzo", Toast.LENGTH_SHORT).show()
                             firebaseRef.child(lunchId).setValue(lunch).addOnCompleteListener {
                                 Toast.makeText(this, "Almuerzo guardado exitosamente", Toast.LENGTH_SHORT).show()
-
+                                savebtn.isEnabled = true
                             }.addOnFailureListener {
-                                Toast.makeText(this, "data failed to store ", Toast.LENGTH_SHORT)
+                                Toast.makeText(this, "Algo salió mal ", Toast.LENGTH_SHORT)
                                     .show()
+                                savebtn.isEnabled = true
                             }
+
                             val intent = Intent(this, HomeCompany::class.java)
                             startActivity(intent)
                         }

@@ -5,9 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitePalette"
     tools:context=".SeeCompanyLunchesDayOfTheWeek">
-    <include
-        layout="@layout/action_bar_toolbar"/>
+
+    <include layout="@layout/action_bar_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_CompanyLunches"
@@ -63,8 +64,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="TextView"
         android:fontFamily="@font/demibold2"
+        android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

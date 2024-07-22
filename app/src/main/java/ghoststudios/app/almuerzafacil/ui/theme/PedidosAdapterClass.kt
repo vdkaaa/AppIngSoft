@@ -40,7 +40,7 @@ class PedidosAdapterClass (private val pedidos: ArrayList<Order>, private val us
         holder.textViewTime.text = "Hora Pedido: ${pedidos[i].dateOrdered.hours} : ${pedidos[i].dateOrdered.minutes}"
         holder.textViewTime2.text = "Hora Retiro: ${pedidos[i].dateToDeliver.hours} : ${pedidos[i].dateToDeliver.minutes}"
         holder.textViewLunch.text = getLunchName(pedidos[i].lunch!!)
-        holder.textViewQuantity.text = pedidos[i].amount.toString()
+        holder.textViewQuantity.text = "Cantidad: " + pedidos[i].amount.toString()
 
         if(pedidos[i].eatAtRestaurant){
             holder.textViewForHereOrToGo.text = "Para Servir"
