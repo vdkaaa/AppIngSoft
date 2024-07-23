@@ -10,7 +10,7 @@
     <string name="ValorAlmuerzo">Valor del Almuerzo</string>
     <string name="ImagenAlmuerzo">Imagen del Almuerzo</string>
     //Botones
-    <string name="BotonSubirAlmuerzo">Subir Almuerzo</string>
+    <string name="BotonSubirAlmuerzo">Crear Almuerzo</string>
     <string name="BotonAgendar">Agendar</string>
     <string name="BotonVerAlmuerzosAgendados">Almuerzos Agendados</string>
     // Login
