@@ -11,13 +11,19 @@
     tools:context=".Authentication.ui.LoginActivity">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="316dp"
+        android:layout_height="185dp"
+        app:srcCompat="@drawable/logoalmuerzafacil2" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:fontFamily="@font/demibold2"
         android:gravity="center"
         android:text="@string/welcome"
-        android:fontFamily="@font/demibold2"
         android:textColor="@color/colorBlackPalette"
         android:textSize="40sp" />
 
@@ -70,4 +76,5 @@
         android:backgroundTint="@color/colorGreenPalette"
         android:text="@string/sign_in"
         android:textSize="18sp" />
+
 </LinearLayout>

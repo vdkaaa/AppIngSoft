@@ -20,7 +20,7 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Bienvenid@ a Almuerzafacil !"</string>
+    <string name="welcome">"Bienvenidos!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -55,7 +55,7 @@
     <string name="verAlmuerzosAgendados">"Ver almuerzos agendados"</string>
 
     //HomeEmpresa
-    <string name="titleHomeCompany">"Bienvenid@ \nAdministrador"</string>
+    <string name="titleHomeCompany">"Bienvenido \nAdministrador"</string>
     <string name="createALunch">"Crear un almuerzo"</string>
     <string name="seePendingOrders">"Ver almuerzos agendados"</string>
     <string name="uploadLunch">"Subir almuerzo"</string>
